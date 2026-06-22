@@ -24,3 +24,9 @@ pnpm-debug.log*
 # Editor
 .idea/
 .vscode/settings.json
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
