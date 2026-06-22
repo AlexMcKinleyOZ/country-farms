@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Country Farms color palette ── */
+  --color-warm-white:  #FFF8EF;
+  --color-straw:       #F5E9D4;
+  --color-terracotta:  #C4622D;
+  --color-burnt-clay:  #9A4520;
+  --color-dark-soil:   #2C1810;
+  --color-field-brown: #6B4C3B;
+  --color-sage-green:  #5A7A52;
+  --color-sky-blue:    #D4E8F0;
+  --color-wheat:       #DFC9A8;
+
+  /* ── Typography ── */
+  --font-lora: 'Lora', Georgia, serif;
+  --font-dm:   'DM Sans', system-ui, sans-serif;
+}
+
+/* ── Base ─────────────────────────────────────────────────── */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-dm);
+  background-color: #FFF8EF;
+  color: #2C1810;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* WCAG AA focus ring */
+*:focus-visible {
+  outline: 2px solid #C4622D;
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Layout helpers ───────────────────────────────────────── */
+.cf-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;   /* 20px mobile */
+}
+@media (min-width: 640px)  { .cf-container { padding-inline: 2rem; } }
+@media (min-width: 1024px) { .cf-container { padding-inline: 2.5rem; } }
+
+.cf-section {
+  padding-block: 3rem;       /* 48px mobile */
+}
+@media (min-width: 640px)  { .cf-section { padding-block: 4.5rem; } }
+@media (min-width: 1024px) { .cf-section { padding-block: 6rem; } }
+
+/* ── Buttons ──────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  background-color: #C4622D;
+  color: #FFFFFF;
+  font-family: var(--font-dm);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  line-height: 1.25rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 150ms ease, transform 150ms ease;
+  white-space: nowrap;
+}
+.btn-primary:hover { background-color: #9A4520; transform: translateY(-1px); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  background-color: transparent;
+  color: #C4622D;
+  font-family: var(--font-dm);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  line-height: 1.25rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: 0.5rem;
+  border: 1.5px solid #C4622D;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 150ms ease, transform 150ms ease;
+  white-space: nowrap;
+}
+.btn-secondary:hover { background-color: rgba(196,98,45,0.06); transform: translateY(-1px); }
+
+/* ── Fluid headings ───────────────────────────────────────── */
+.text-display {
+  font-family: var(--font-lora);
+  font-weight: 700;
+  font-size: clamp(2.25rem, 0.25rem + 5vw, 4rem);
+  line-height: 1.1;
+}
+.text-h1 {
+  font-family: var(--font-lora);
+  font-weight: 600;
+  font-size: clamp(1.75rem, 0.6rem + 2.86vw, 2.75rem);
+  line-height: 1.15;
+}
+.text-h2 {
+  font-family: var(--font-lora);
+  font-weight: 600;
+  font-size: clamp(1.375rem, 0.66rem + 1.79vw, 2rem);
+  line-height: 1.25;
+}
+.text-h3 {
+  font-family: var(--font-dm);
+  font-weight: 600;
+  font-size: clamp(1.125rem, 0.84rem + 0.71vw, 1.375rem);
+  line-height: 1.35;
+}
+
+/* Card shadow */
+.cf-card-shadow { box-shadow: 0 2px 16px rgba(44,24,16,0.08); }

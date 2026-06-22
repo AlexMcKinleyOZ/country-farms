@@ -1,0 +1,52 @@
+---
+import { useTranslations, type Lang } from '../i18n/index';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang).howItWorksPreview;
+---
+
+<section class="bg-warm-white cf-section" aria-labelledby="hiw-heading">
+  <div class="cf-container flex flex-col gap-14">
+
+    <div class="text-center flex flex-col gap-4 max-w-xl mx-auto">
+      <h2 id="hiw-heading" class="text-h2 text-dark-soil">{t.heading}</h2>
+      <p class="font-dm text-base leading-[1.7] text-field-brown">{t.intro}</p>
+    </div>
+
+    <div class="relative">
+      <div
+        class="hidden sm:block absolute top-8 left-[calc(16.67%+1rem)] right-[calc(16.67%+1rem)] h-px bg-wheat z-0"
+        aria-hidden="true"
+      ></div>
+
+      <ol class="grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-12 relative z-10">
+        {t.steps.map(({ number, title, desc }) => (
+          <li class="flex flex-col items-center text-center sm:items-start sm:text-left gap-4">
+            <div
+              class="w-16 h-16 rounded-full bg-terracotta text-white font-lora font-bold text-xl
+                     flex items-center justify-center shrink-0 mx-auto"
+              aria-hidden="true"
+            >
+              {number}
+            </div>
+            <div class="flex flex-col gap-2">
+              <h3 class="text-h3 text-dark-soil mx-auto">{title}</h3>
+              <p class="font-dm text-sm leading-[1.65] text-field-brown">{desc}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+
+    <div class="flex justify-center">
+      <a href={lang === 'ja' ? '/ja/how-it-works' : '/how-it-works'} class="btn-secondary">
+        {t.cta}
+      </a>
+    </div>
+
+  </div>
+</section>

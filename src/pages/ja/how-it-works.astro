@@ -1,0 +1,251 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import Footer from '../../components/Footer.astro';
+
+const steps = [
+  {
+    number: '01',
+    icon: '👤',
+    title: 'アカウントを作成する',
+    desc: '5分以内に登録が完了します。本人確認、投資契約の確認、投資家ダッシュボードの設定まで、すべてオンラインで完結。書類記入や郵送は一切不要です。',
+    detail: '必要なもの：政府発行の身分証明書、マイナンバーに相当するSSN（税務申告用）、銀行口座情報。',
+  },
+  {
+    number: '02',
+    icon: '🗺️',
+    title: '農地物件を探す',
+    desc: '厳選された農地物件を一覧で確認できます。各物件には、詳細なデューデリジェンスレポート、土壌品質評価、水利権に関する書類、オペレーターのプロフィール、収益予測分析が含まれています。',
+    detail: 'すべての物件は、プラットフォームに掲載される前に私たちの農業アナリストが独自に審査しています。',
+  },
+  {
+    number: '03',
+    icon: '💰',
+    title: '投資額を決める',
+    desc: '$1,000から始められます。1つまたは複数の物件に自由に分散投資が可能です。異なる農業の種類や地域に分散することをお勧めします。',
+    detail: '物件のクロージングまで資金はエスクローに保管され、その後農場運営に直接投入されます。',
+  },
+  {
+    number: '04',
+    icon: '📈',
+    title: 'リターンを得てインパクトを広げる',
+    desc: '農場収益から四半期ごとに現金配当を受け取り、ポートフォリオのパフォーマンスをリアルタイムで追跡。さらに、あなたの投資がもたらすコミュニティへの成果を年次インパクトレポートで確認できます。',
+    detail: '平均配当開始時期：投資クロージングから90日以内に初回支払いが行われます。',
+  },
+];
+
+const fees = [
+  { type: '年間プラットフォーム手数料', amount: '1.0%', note: '投資額に対して毎年請求' },
+  { type: '取得手数料', amount: '1〜2%', note: 'クロージング時に一度だけ控除' },
+  { type: '管理手数料', amount: '含む', note: 'プラットフォーム手数料に含まれる' },
+  { type: 'パフォーマンス手数料', amount: '10%', note: 'ハードル率8%超過分のリターンに対して' },
+  { type: '解約手数料', amount: 'なし', note: '期間満了まで保有しても違約金なし' },
+];
+
+const faqs = [
+  {
+    q: '最低投資額はいくらですか？',
+    a: '1物件あたり$1,000から投資できます。上限はなく、複数の農場に分散投資することも可能です。',
+  },
+  {
+    q: 'リターンはどのように受け取りますか？',
+    a: '配当は四半期ごとにACH送金で登録口座に直接振り込まれます。年末には税務申告用の1099フォームが発行されます。',
+  },
+  {
+    q: '投資期間はどのくらいですか？',
+    a: 'ほとんどの物件の保有期間は5〜10年です。各物件のページに投資前から明確に記載されています。',
+  },
+  {
+    q: '途中で投資を解約できますか？',
+    a: '農地は長期投資です。現時点では二次市場は提供していません。保有期間中に必要となる可能性のある資金は投資しないことをお勧めします。',
+  },
+  {
+    q: '農場が予想を下回った場合はどうなりますか？',
+    a: 'すべての物件は複数の収量シナリオでストレステストを行っています。パフォーマンスが低下した場合、私たちのチームが農場オペレーターと改善計画を策定します。元本は土地の価値によって担保されています。',
+  },
+  {
+    q: 'Country Farmsはどのように物件を選定しますか？',
+    a: '土壌の健全性、水へのアクセス、気候リスク、オペレーターの実績、権原審査、コミュニティインパクトの可能性など60項目にわたる評価を実施しています。審査を通過してプラットフォームに掲載される物件は全体の5%未満です。',
+  },
+  {
+    q: '投資はFDIC保護の対象ですか？',
+    a: '投資はFDIC保険の対象外です。農地投資には元本損失のリスクを含みます。ただし、農地そのものが多くの金融資産にはない担保としての役割を果たします。',
+  },
+  {
+    q: '認定投資家でなければ投資できませんか？',
+    a: '現時点では、米国の認定投資家が対象です。認定投資家とは、一般的に純資産100万ドル超（主たる住居を除く）または年収20万ドル超（共同申告の場合30万ドル超）の方です。非認定投資家向けのReg A+オファリングに向けて積極的に準備を進めています。',
+  },
+];
+---
+
+<Layout
+  title="仕組み — Country Farms"
+  description="Country Farmsが農地投資をシンプル、透明、かつインパクトのあるものにする4つのステップを解説します。"
+  lang="ja"
+>
+  <Nav lang="ja" />
+
+  <main id="main-content">
+
+    <PageHero
+      title="シンプルで透明な農地投資"
+      subtitle="登録から最初の四半期配当まで、4つのわかりやすいステップ。農業の専門知識は一切不要です。"
+    />
+
+    <!-- ステップ -->
+    <section class="bg-warm-white cf-section" aria-labelledby="steps-heading">
+      <div class="cf-container flex flex-col gap-6">
+        <h2 id="steps-heading" class="sr-only">プロセス</h2>
+
+        {steps.map((step, i) => (
+          <article
+            class={`flex flex-col gap-8 lg:gap-16 lg:items-center py-10 border-b border-wheat last:border-0
+                    ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
+          >
+            <div class="shrink-0 flex flex-col items-center gap-3 lg:w-48">
+              <div
+                class="w-20 h-20 rounded-full bg-terracotta flex items-center justify-center
+                       font-lora font-bold text-white text-2xl"
+                aria-hidden="true"
+              >
+                {step.number}
+              </div>
+              <span class="text-4xl" aria-hidden="true">{step.icon}</span>
+            </div>
+
+            <div class="flex flex-col gap-3 flex-1">
+              <h3 class="text-h2 text-dark-soil">{step.title}</h3>
+              <p class="font-dm text-base leading-[1.7] text-field-brown">{step.desc}</p>
+              <p class="font-dm text-sm leading-[1.65] text-field-brown/80 bg-straw rounded-lg px-4 py-3 border-l-4 border-terracotta/40">
+                {step.detail}
+              </p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- 投資の効果 -->
+    <section class="bg-straw cf-section" aria-labelledby="at-work-heading">
+      <div class="cf-container flex flex-col gap-12">
+        <div class="text-center max-w-2xl mx-auto flex flex-col gap-4">
+          <h2 id="at-work-heading" class="text-h2 text-dark-soil">あなたの投資が生み出すもの</h2>
+          <p class="font-dm text-base leading-[1.7] text-field-brown">
+            投資したすべての資金が二重の働きをします。財務的なリターンを生み出しながら、測定可能なコミュニティへのインパクトをもたらします。
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-warm-white rounded-xl p-8 flex flex-col gap-5 cf-card-shadow">
+            <div class="w-12 h-12 rounded-full bg-terracotta/10 flex items-center justify-center text-2xl" aria-hidden="true">📊</div>
+            <h3 class="text-h3 text-dark-soil">財務リターン</h3>
+            <ul class="flex flex-col gap-3">
+              {[
+                ['四半期配当', '農場収益から90日ごとに現金収入を受け取れます'],
+                ['土地の価値上昇', '農地は過去20年間で年平均6%の価格上昇を実現'],
+                ['税務上の優遇', '減価償却により課税所得を減らせる場合があります'],
+                ['ポートフォリオの分散', '株式・債券との相関が低い資産クラス'],
+              ].map(([label, desc]) => (
+                <li class="flex flex-col gap-0.5">
+                  <span class="font-dm font-semibold text-[15px] text-dark-soil">{label}</span>
+                  <span class="font-dm text-sm text-field-brown">{desc}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="bg-warm-white rounded-xl p-8 flex flex-col gap-5 cf-card-shadow">
+            <div class="w-12 h-12 rounded-full bg-sage-green/15 flex items-center justify-center text-2xl" aria-hidden="true">🌱</div>
+            <h3 class="text-h3 text-dark-soil">コミュニティへのインパクト</h3>
+            <ul class="flex flex-col gap-3">
+              {[
+                ['雇用の創出', '各農場は平均8名のフルタイム相当の地域雇用を支えています'],
+                ['地元との連携', '農場の投入物の70%以上を各物件から50マイル以内で調達'],
+                ['教育プログラム', 'プラットフォーム手数料から農業教育助成金を毎年拠出'],
+                ['持続可能性', 'すべての農場が3年以内に再生農業の基準を満たします'],
+              ].map(([label, desc]) => (
+                <li class="flex flex-col gap-0.5">
+                  <span class="font-dm font-semibold text-[15px] text-dark-soil">{label}</span>
+                  <span class="font-dm text-sm text-field-brown">{desc}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 手数料 -->
+    <section class="bg-warm-white cf-section" aria-labelledby="fees-heading">
+      <div class="cf-container flex flex-col gap-10 max-w-3xl mx-auto">
+        <div class="text-center flex flex-col gap-4">
+          <h2 id="fees-heading" class="text-h2 text-dark-soil">手数料と透明性</h2>
+          <p class="font-dm text-base leading-[1.7] text-field-brown">
+            隠れた費用は一切ありません。すべての手数料は各物件のページに事前に開示されています。
+          </p>
+        </div>
+
+        <div class="overflow-x-auto rounded-xl border border-wheat cf-card-shadow">
+          <table class="w-full text-left" aria-label="Country Farms 手数料表">
+            <thead>
+              <tr class="bg-straw border-b border-wheat">
+                <th class="font-dm font-semibold text-xs uppercase tracking-[0.06em] text-field-brown px-6 py-4">手数料の種類</th>
+                <th class="font-dm font-semibold text-xs uppercase tracking-[0.06em] text-field-brown px-6 py-4">金額</th>
+                <th class="font-dm font-semibold text-xs uppercase tracking-[0.06em] text-field-brown px-6 py-4">備考</th>
+              </tr>
+            </thead>
+            <tbody>
+              {fees.map(({ type, amount, note }, i) => (
+                <tr class={`border-b border-wheat last:border-0 ${i % 2 === 0 ? 'bg-warm-white' : 'bg-straw/40'}`}>
+                  <td class="font-dm font-medium text-[15px] text-dark-soil px-6 py-4">{type}</td>
+                  <td class="font-lora font-semibold text-base text-terracotta px-6 py-4">{amount}</td>
+                  <td class="font-dm text-sm text-field-brown px-6 py-4">{note}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- よくある質問 -->
+    <section class="bg-straw cf-section" aria-labelledby="faq-heading">
+      <div class="cf-container flex flex-col gap-10 max-w-3xl mx-auto">
+        <div class="text-center flex flex-col gap-3">
+          <h2 id="faq-heading" class="text-h2 text-dark-soil">よくある質問</h2>
+          <p class="font-dm text-base text-field-brown">さらにご質問は <a href="/ja/contact" class="text-terracotta hover:text-burnt-clay underline underline-offset-2 transition-colors">お問い合わせ</a> ください。</p>
+        </div>
+
+        <div class="flex flex-col divide-y divide-wheat rounded-xl bg-warm-white border border-wheat overflow-hidden cf-card-shadow">
+          {faqs.map(({ q, a }) => (
+            <details class="group px-6 py-0">
+              <summary
+                class="flex items-center justify-between gap-4 py-5 cursor-pointer
+                       font-dm font-semibold text-[15px] text-dark-soil
+                       list-none select-none
+                       hover:text-terracotta transition-colors duration-150"
+              >
+                {q}
+                <span
+                  class="shrink-0 w-6 h-6 rounded-full border border-wheat flex items-center justify-center
+                         text-field-brown text-sm transition-transform duration-200
+                         group-open:rotate-45 group-open:text-terracotta group-open:border-terracotta"
+                  aria-hidden="true"
+                >
+                  +
+                </span>
+              </summary>
+              <p class="font-dm text-sm leading-[1.7] text-field-brown pb-5 -mt-1">{a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTABanner lang="ja" />
+  </main>
+
+  <Footer lang="ja" />
+</Layout>

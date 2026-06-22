@@ -1,0 +1,258 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import PageHero from '../components/PageHero.astro';
+import CTABanner from '../components/CTABanner.astro';
+import Footer from '../components/Footer.astro';
+
+const steps = [
+  {
+    number: '01',
+    icon: '👤',
+    title: 'Create Your Account',
+    desc: 'Sign up in under 5 minutes. We\'ll verify your identity, walk you through our investment agreement, and set up your investor dashboard — no paperwork, no fax machines.',
+    detail: 'You\'ll need: a government-issued ID, your SSN (for tax purposes), and a linked bank account.',
+  },
+  {
+    number: '02',
+    icon: '🗺️',
+    title: 'Browse Available Farmland',
+    desc: 'Explore our curated property listings — each with full due diligence reports, soil quality ratings, water rights documentation, operator profiles, and projected return analysis.',
+    detail: 'Every property is independently evaluated by our agricultural analysts before it ever appears on the platform.',
+  },
+  {
+    number: '03',
+    icon: '💰',
+    title: 'Choose Your Investment Amount',
+    desc: 'Invest as little as $1,000 or as much as you like across one or multiple properties. Diversifying across different farm types and regions is encouraged.',
+    detail: 'Funds are held in escrow until the property closes, then deployed directly into the farm operation.',
+  },
+  {
+    number: '04',
+    icon: '📈',
+    title: 'Earn Returns & Grow Impact',
+    desc: 'Receive quarterly cash distributions from farm income, track your portfolio in real time, and receive annual impact reports showing the community outcomes your investment helped create.',
+    detail: 'Average distribution timeline: first payment within 90 days of investment close.',
+  },
+];
+
+const fees = [
+  { type: 'Annual Platform Fee', amount: '1.0%', note: 'Of invested amount, charged annually' },
+  { type: 'Acquisition Fee', amount: '1–2%', note: 'One-time, deducted at close' },
+  { type: 'Management Fee', amount: 'Included', note: 'Covered by platform fee' },
+  { type: 'Performance Fee', amount: '10%', note: 'Of returns above 8% hurdle rate' },
+  { type: 'Exit Fee', amount: 'None', note: 'No penalty for holding to term' },
+];
+
+const faqs = [
+  {
+    q: 'What is the minimum investment?',
+    a: 'The minimum investment is $1,000 per property. There is no maximum, and you can spread investments across multiple farms.',
+  },
+  {
+    q: 'How do I receive my returns?',
+    a: 'Distributions are paid quarterly via ACH directly to your linked bank account. You\'ll receive a 1099 at year end for tax reporting.',
+  },
+  {
+    q: 'How long is the investment term?',
+    a: 'Most properties have a 5–10 year hold period. The expected term is outlined clearly on each property listing before you invest.',
+  },
+  {
+    q: 'Can I sell my investment early?',
+    a: 'Farmland is a long-term investment. We do not currently offer a secondary market. We recommend investing only capital you won\'t need during the hold period.',
+  },
+  {
+    q: 'What happens if a farm underperforms?',
+    a: 'We stress-test every acquisition for multiple yield scenarios. In the event of underperformance, our team works with the farm operator on a remediation plan. Your principal is secured against the underlying land value.',
+  },
+  {
+    q: 'How does Country Farms select properties?',
+    a: 'Every property goes through a 60-point evaluation covering soil health, water access, climate risk, operator history, title review, and community impact potential. Fewer than 5% of reviewed properties make it to the platform.',
+  },
+  {
+    q: 'Is my investment insured or FDIC-protected?',
+    a: 'Investments are not FDIC-insured. Farmland investing carries risk, including possible loss of principal. The land itself provides a layer of collateral that most financial assets do not.',
+  },
+  {
+    q: 'Do I need to be an accredited investor?',
+    a: 'Currently, yes. Country Farms investments are available to accredited investors in the United States. We are actively working toward a Reg A+ offering for non-accredited investors.',
+  },
+];
+---
+
+<Layout
+  title="How It Works — Country Farms"
+  description="Learn how Country Farms makes farmland investing simple, transparent, and impactful in four straightforward steps."
+  lang="en"
+>
+  <Nav lang="en" />
+
+  <main id="main-content">
+
+    <!-- Hero -->
+    <PageHero
+      title="Simple, Transparent Farmland Investing"
+      subtitle="From sign-up to your first quarterly distribution in four straightforward steps — no agriculture degree required."
+    />
+
+    <!-- Step-by-step process -->
+    <section class="bg-warm-white cf-section" aria-labelledby="steps-heading">
+      <div class="cf-container flex flex-col gap-6">
+        <h2 id="steps-heading" class="sr-only">The Process</h2>
+
+        {steps.map((step, i) => (
+          <article
+            class={`flex flex-col gap-8 lg:gap-16 lg:items-center py-10 border-b border-wheat last:border-0
+                    ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
+          >
+            <!-- Number / Icon block -->
+            <div class="shrink-0 flex flex-col items-center gap-3 lg:w-48">
+              <div
+                class="w-20 h-20 rounded-full bg-terracotta flex items-center justify-center
+                       font-lora font-bold text-white text-2xl"
+                aria-hidden="true"
+              >
+                {step.number}
+              </div>
+              <span class="text-4xl" aria-hidden="true">{step.icon}</span>
+            </div>
+
+            <!-- Content block -->
+            <div class="flex flex-col gap-3 flex-1">
+              <h3 class="text-h2 text-dark-soil">{step.title}</h3>
+              <p class="font-dm text-base leading-[1.7] text-field-brown">{step.desc}</p>
+              <p class="font-dm text-sm leading-[1.65] text-field-brown/80 bg-straw rounded-lg px-4 py-3 border-l-4 border-terracotta/40">
+                {step.detail}
+              </p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Investment At Work -->
+    <section class="bg-straw cf-section" aria-labelledby="at-work-heading">
+      <div class="cf-container flex flex-col gap-12">
+        <div class="text-center max-w-2xl mx-auto flex flex-col gap-4">
+          <h2 id="at-work-heading" class="text-h2 text-dark-soil">Your Investment At Work</h2>
+          <p class="font-dm text-base leading-[1.7] text-field-brown">
+            Every dollar you invest does double duty — generating financial returns and measurable community impact.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Financial returns -->
+          <div class="bg-warm-white rounded-xl p-8 flex flex-col gap-5 cf-card-shadow">
+            <div class="w-12 h-12 rounded-full bg-terracotta/10 flex items-center justify-center text-2xl" aria-hidden="true">📊</div>
+            <h3 class="text-h3 text-dark-soil">Financial Returns</h3>
+            <ul class="flex flex-col gap-3">
+              {[
+                ['Quarterly distributions', 'Cash income from farm operations paid every 90 days'],
+                ['Land appreciation', 'Farmland has appreciated an average of 6% annually over 20 years'],
+                ['Tax efficiency', 'Depreciation and depletion allowances can reduce your taxable income'],
+                ['Portfolio diversification', 'Low correlation to equities and bonds'],
+              ].map(([label, desc]) => (
+                <li class="flex flex-col gap-0.5">
+                  <span class="font-dm font-semibold text-[15px] text-dark-soil">{label}</span>
+                  <span class="font-dm text-sm text-field-brown">{desc}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Community impact -->
+          <div class="bg-warm-white rounded-xl p-8 flex flex-col gap-5 cf-card-shadow">
+            <div class="w-12 h-12 rounded-full bg-sage-green/15 flex items-center justify-center text-2xl" aria-hidden="true">🌱</div>
+            <h3 class="text-h3 text-dark-soil">Community Impact</h3>
+            <ul class="flex flex-col gap-3">
+              {[
+                ['Jobs supported', 'Each farm supports an average of 8 full-time-equivalent local positions'],
+                ['Local partnerships', 'We source 70%+ of farm inputs from within 50 miles of each property'],
+                ['Education programs', 'Annual agricultural education grants funded from platform fees'],
+                ['Sustainability goals', 'All farms meet our regenerative agriculture standards by year 3'],
+              ].map(([label, desc]) => (
+                <li class="flex flex-col gap-0.5">
+                  <span class="font-dm font-semibold text-[15px] text-dark-soil">{label}</span>
+                  <span class="font-dm text-sm text-field-brown">{desc}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fees & Transparency -->
+    <section class="bg-warm-white cf-section" aria-labelledby="fees-heading">
+      <div class="cf-container flex flex-col gap-10 max-w-3xl mx-auto">
+        <div class="text-center flex flex-col gap-4">
+          <h2 id="fees-heading" class="text-h2 text-dark-soil">Fees & Transparency</h2>
+          <p class="font-dm text-base leading-[1.7] text-field-brown">
+            No hidden charges. Every fee is disclosed upfront on each property listing.
+          </p>
+        </div>
+
+        <div class="overflow-x-auto rounded-xl border border-wheat cf-card-shadow">
+          <table class="w-full text-left" aria-label="Country Farms fee schedule">
+            <thead>
+              <tr class="bg-straw border-b border-wheat">
+                <th class="font-dm font-semibold text-xs uppercase tracking-[0.06em] text-field-brown px-6 py-4">Fee Type</th>
+                <th class="font-dm font-semibold text-xs uppercase tracking-[0.06em] text-field-brown px-6 py-4">Amount</th>
+                <th class="font-dm font-semibold text-xs uppercase tracking-[0.06em] text-field-brown px-6 py-4">Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              {fees.map(({ type, amount, note }, i) => (
+                <tr class={`border-b border-wheat last:border-0 ${i % 2 === 0 ? 'bg-warm-white' : 'bg-straw/40'}`}>
+                  <td class="font-dm font-medium text-[15px] text-dark-soil px-6 py-4">{type}</td>
+                  <td class="font-lora font-semibold text-base text-terracotta px-6 py-4">{amount}</td>
+                  <td class="font-dm text-sm text-field-brown px-6 py-4">{note}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section class="bg-straw cf-section" aria-labelledby="faq-heading">
+      <div class="cf-container flex flex-col gap-10 max-w-3xl mx-auto">
+        <div class="text-center flex flex-col gap-3">
+          <h2 id="faq-heading" class="text-h2 text-dark-soil">Frequently Asked Questions</h2>
+          <p class="font-dm text-base text-field-brown">Still have questions? <a href="/contact" class="text-terracotta hover:text-burnt-clay underline underline-offset-2 transition-colors">Reach out to our team.</a></p>
+        </div>
+
+        <div class="flex flex-col divide-y divide-wheat rounded-xl bg-warm-white border border-wheat overflow-hidden cf-card-shadow">
+          {faqs.map(({ q, a }) => (
+            <details class="group px-6 py-0">
+              <summary
+                class="flex items-center justify-between gap-4 py-5 cursor-pointer
+                       font-dm font-semibold text-[15px] text-dark-soil
+                       list-none select-none
+                       hover:text-terracotta transition-colors duration-150"
+              >
+                {q}
+                <span
+                  class="shrink-0 w-6 h-6 rounded-full border border-wheat flex items-center justify-center
+                         text-field-brown text-sm transition-transform duration-200
+                         group-open:rotate-45 group-open:text-terracotta group-open:border-terracotta"
+                  aria-hidden="true"
+                >
+                  +
+                </span>
+              </summary>
+              <p class="font-dm text-sm leading-[1.7] text-field-brown pb-5 -mt-1">
+                {a}
+              </p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTABanner lang="en" />
+  </main>
+
+  <Footer lang="en" />
+</Layout>

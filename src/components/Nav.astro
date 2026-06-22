@@ -1,0 +1,211 @@
+---
+import { useTranslations, getEquivalentUrl, type Lang } from '../i18n/index';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang);
+
+const currentPath = Astro.url.pathname;
+const enUrl = lang === 'ja' ? getEquivalentUrl(currentPath, 'en') : currentPath;
+const jaUrl = lang === 'en' ? getEquivalentUrl(currentPath, 'ja') : currentPath;
+---
+
+<header class="sticky top-0 z-50 bg-warm-white border-b border-wheat">
+  <div class="cf-container flex items-center justify-between h-[72px]">
+
+    <!-- Logo -->
+    <a
+      href={lang === 'ja' ? '/ja/' : '/'}
+      class="font-lora font-bold text-xl text-terracotta hover:text-burnt-clay transition-colors duration-150"
+      aria-label={t.nav.logoLabel}
+    >
+      Country Farms
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex items-center gap-8" aria-label={t.nav.drawerLabel}>
+      {t.nav.links.map(({ label, href }) => (
+        <a
+          href={href}
+          class="font-dm text-[15px] font-medium text-field-brown hover:text-dark-soil transition-colors duration-150"
+        >
+          {label}
+        </a>
+      ))}
+
+      <!-- Language toggle -->
+      <div class="flex items-center gap-0.5 border border-wheat rounded-lg px-1 py-0.5" role="group" aria-label={t.nav.langToggleLabel}>
+        <a
+          href={enUrl}
+          class={`px-2 py-1 rounded text-sm font-dm font-semibold transition-colors duration-150
+                  ${lang === 'en' ? 'text-terracotta' : 'text-field-brown hover:text-dark-soil'}`}
+          aria-current={lang === 'en' ? 'true' : undefined}
+        >En</a>
+        <span class="text-wheat/80 text-xs select-none" aria-hidden="true">|</span>
+        <a
+          href={jaUrl}
+          class={`px-2 py-1 rounded text-sm font-dm font-semibold transition-colors duration-150
+                  ${lang === 'ja' ? 'text-terracotta' : 'text-field-brown hover:text-dark-soil'}`}
+          aria-current={lang === 'ja' ? 'true' : undefined}
+        >Ja</a>
+      </div>
+
+      <a href={lang === 'ja' ? '/ja/contact' : '/contact'} class="btn-primary !py-[10px] !px-5 !text-sm">
+        {t.nav.cta}
+      </a>
+    </nav>
+
+    <!-- Hamburger (mobile) -->
+    <button
+      id="nav-hamburger"
+      type="button"
+      class="md:hidden flex flex-col justify-center items-center gap-[5px] w-11 h-11 -mr-2 rounded"
+      aria-label={t.nav.openMenu}
+      aria-expanded="false"
+      aria-controls="nav-drawer"
+    >
+      <span class="block w-6 h-[2px] bg-dark-soil transition-all duration-[250ms] origin-center" id="ham-1"></span>
+      <span class="block w-6 h-[2px] bg-dark-soil transition-all duration-[250ms]"               id="ham-2"></span>
+      <span class="block w-6 h-[2px] bg-dark-soil transition-all duration-[250ms] origin-center" id="ham-3"></span>
+    </button>
+
+  </div>
+</header>
+
+<!-- Page overlay -->
+<div
+  id="nav-overlay"
+  aria-hidden="true"
+  class="fixed inset-0 bg-[rgba(44,24,16,0.45)] z-40 opacity-0 pointer-events-none transition-opacity duration-200"
+></div>
+
+<!-- Mobile drawer -->
+<div
+  id="nav-drawer"
+  role="dialog"
+  aria-modal="true"
+  aria-label={t.nav.drawerLabel}
+  aria-hidden="true"
+  class="fixed top-0 right-0 h-screen w-[min(280px,100vw)] bg-warm-white z-50
+         translate-x-full transition-transform duration-[250ms] ease-out
+         flex flex-col px-6 pt-8 pb-8"
+  style="box-shadow: -4px 0 24px rgba(44,24,16,0.12);"
+>
+  <!-- Drawer header -->
+  <div class="flex items-center justify-between mb-8">
+    <a href={lang === 'ja' ? '/ja/' : '/'} class="font-lora font-bold text-xl text-terracotta">Country Farms</a>
+    <button
+      id="nav-close"
+      type="button"
+      class="w-11 h-11 flex items-center justify-center text-dark-soil
+             hover:text-terracotta transition-colors duration-150 rounded"
+      aria-label={t.nav.closeMenu}
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round"
+           aria-hidden="true">
+        <line x1="18" y1="6"  x2="6"  y2="18" />
+        <line x1="6"  y1="6"  x2="18" y2="18" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Drawer links -->
+  <nav class="flex flex-col flex-1" aria-label={t.nav.drawerLabel}>
+    {t.nav.links.map(({ label, href }) => (
+      <a
+        href={href}
+        class="font-lora font-semibold text-[22px] text-dark-soil
+               py-3 border-b border-wheat
+               hover:text-terracotta transition-colors duration-150
+               min-h-[48px] flex items-center"
+      >
+        {label}
+      </a>
+    ))}
+  </nav>
+
+  <!-- Mobile lang toggle -->
+  <div class="flex items-center justify-center gap-2 py-4 border-t border-wheat mt-4" role="group" aria-label={t.nav.langToggleLabel}>
+    <a
+      href={enUrl}
+      class={`font-dm font-semibold text-base transition-colors duration-150
+              ${lang === 'en' ? 'text-terracotta' : 'text-field-brown hover:text-dark-soil'}`}
+      aria-current={lang === 'en' ? 'true' : undefined}
+    >English</a>
+    <span class="text-wheat select-none" aria-hidden="true">|</span>
+    <a
+      href={jaUrl}
+      class={`font-dm font-semibold text-base transition-colors duration-150
+              ${lang === 'ja' ? 'text-terracotta' : 'text-field-brown hover:text-dark-soil'}`}
+      aria-current={lang === 'ja' ? 'true' : undefined}
+    >日本語</a>
+  </div>
+
+  <!-- Drawer CTA -->
+  <a href={lang === 'ja' ? '/ja/contact' : '/contact'} class="btn-primary w-full justify-center mt-2">
+    {t.nav.cta}
+  </a>
+</div>
+
+<script>
+  const hamburger = document.getElementById('nav-hamburger') as HTMLButtonElement | null;
+  const closeBtn  = document.getElementById('nav-close')     as HTMLButtonElement | null;
+  const overlay   = document.getElementById('nav-overlay')   as HTMLElement | null;
+  const drawer    = document.getElementById('nav-drawer')    as HTMLElement | null;
+  const ham1      = document.getElementById('ham-1')         as HTMLElement | null;
+  const ham2      = document.getElementById('ham-2')         as HTMLElement | null;
+  const ham3      = document.getElementById('ham-3')         as HTMLElement | null;
+
+  function getFocusable(el: HTMLElement) {
+    return Array.from(
+      el.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )
+    );
+  }
+
+  function openMenu() {
+    drawer?.classList.remove('translate-x-full');
+    drawer?.setAttribute('aria-hidden', 'false');
+    overlay?.classList.remove('opacity-0', 'pointer-events-none');
+    hamburger?.setAttribute('aria-expanded', 'true');
+    ham1?.classList.add('rotate-45',  'translate-y-[7px]');
+    ham2?.classList.add('opacity-0');
+    ham3?.classList.add('-rotate-45', '-translate-y-[7px]');
+    document.body.style.overflow = 'hidden';
+    closeBtn?.focus();
+  }
+
+  function closeMenu() {
+    drawer?.classList.add('translate-x-full');
+    drawer?.setAttribute('aria-hidden', 'true');
+    overlay?.classList.add('opacity-0', 'pointer-events-none');
+    hamburger?.setAttribute('aria-expanded', 'false');
+    ham1?.classList.remove('rotate-45',  'translate-y-[7px]');
+    ham2?.classList.remove('opacity-0');
+    ham3?.classList.remove('-rotate-45', '-translate-y-[7px]');
+    document.body.style.overflow = '';
+    hamburger?.focus();
+  }
+
+  hamburger?.addEventListener('click', openMenu);
+  closeBtn?.addEventListener('click',  closeMenu);
+  overlay?.addEventListener('click',   closeMenu);
+
+  drawer?.addEventListener('keydown', (ev) => {
+    if (ev.key === 'Escape') { closeMenu(); return; }
+    if (ev.key !== 'Tab' || !drawer) return;
+    const focusable = getFocusable(drawer);
+    const first = focusable[0];
+    const last  = focusable[focusable.length - 1];
+    if (ev.shiftKey && document.activeElement === first) {
+      ev.preventDefault(); last?.focus();
+    } else if (!ev.shiftKey && document.activeElement === last) {
+      ev.preventDefault(); first?.focus();
+    }
+  });
+</script>

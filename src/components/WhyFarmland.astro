@@ -1,0 +1,35 @@
+---
+import { useTranslations, type Lang } from '../i18n/index';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang).whyFarmland;
+---
+
+<section class="bg-warm-white cf-section" aria-labelledby="why-heading">
+  <div class="cf-container flex flex-col gap-14">
+
+    <div class="text-center flex flex-col gap-4 max-w-xl mx-auto">
+      <h2 id="why-heading" class="text-h2 text-dark-soil">{t.heading}</h2>
+      <p class="font-dm text-base leading-[1.7] text-field-brown">{t.intro}</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {t.stats.map(({ icon, stat, label, desc }) => (
+        <article
+          class="flex flex-col gap-4 bg-straw border border-wheat rounded-xl p-8 cf-card-shadow
+                 transition-shadow duration-200 hover:shadow-[0_4px_24px_rgba(44,24,16,0.12)]"
+        >
+          <span class="text-4xl leading-none" aria-hidden="true">{icon}</span>
+          <p class="font-lora font-bold text-[2.25rem] leading-none text-terracotta">{stat}</p>
+          <h3 class="text-h3 text-dark-soil">{label}</h3>
+          <p class="font-dm text-sm leading-[1.65] text-field-brown">{desc}</p>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>

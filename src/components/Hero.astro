@@ -1,0 +1,72 @@
+---
+import { useTranslations, type Lang } from '../i18n/index';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang).hero;
+---
+
+<section class="bg-straw cf-section" aria-label="Hero">
+  <div class="cf-container">
+    <div class="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
+
+      <!-- Text column -->
+      <div class="flex-1 flex flex-col gap-6">
+
+        <!-- Badge -->
+        <div class="inline-flex self-start">
+          <span
+            class="font-dm font-semibold text-xs uppercase tracking-[0.08em] text-sage-green
+                   bg-sage-green/10 rounded-full px-4 py-1.5"
+          >
+            {t.badge}
+          </span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="text-display text-dark-soil">
+          {t.headline1}<br />{t.headline2}
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="font-dm text-base leading-[1.7] text-field-brown max-w-lg">
+          {t.subtitle}
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-wrap gap-4 items-center">
+          <a href={lang === 'ja' ? '/ja/contact' : '/contact'} class="btn-primary">{t.ctaPrimary}</a>
+          <a href={lang === 'ja' ? '/ja/how-it-works' : '/how-it-works'} class="btn-secondary">{t.ctaSecondary}</a>
+        </div>
+
+        <!-- Trust bar -->
+        <p class="font-dm text-sm text-field-brown/70">{t.trust}</p>
+
+      </div>
+
+      <!-- Illustration column -->
+      <div class="flex-1 max-w-130 lg:max-w-none mx-auto lg:mx-0" aria-hidden="true">
+        <div
+          class="relative rounded-2xl overflow-hidden h-75 sm:h-95 lg:h-110 w-full"
+          style="box-shadow: 0 2px 16px rgba(44,24,16,0.08);"
+        >
+          <div class="absolute inset-0 bg-sky-blue"></div>
+          <div class="absolute top-8 right-10 w-20 h-20 rounded-full bg-[#F5C843] opacity-80"></div>
+          <div class="absolute left-0 right-0 bg-sage-green/30 rounded-[40%_60%_0_0/20px]"
+               style="bottom: 42%; height: 80px;"></div>
+          <div class="absolute left-0 right-0 bottom-0 h-[44%] bg-sage-green/50"></div>
+          <div class="absolute left-0 right-0 bottom-[42%] h-px bg-white/25"></div>
+          <div class="absolute left-0 right-0 bottom-[34%] h-px bg-white/25"></div>
+          <div class="absolute left-0 right-0 bottom-[26%] h-px bg-white/25"></div>
+          <div class="absolute left-0 right-0 bottom-[18%] h-px bg-white/25"></div>
+          <div class="absolute left-0 right-0 bottom-[10%] h-px bg-white/20"></div>
+          <span class="absolute bottom-4 left-4 font-dm text-sm text-white/70">{t.caption}</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

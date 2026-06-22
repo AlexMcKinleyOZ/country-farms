@@ -1,0 +1,268 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const investmentLevels = [
+  'Just exploring',
+  'Under $10,000',
+  '$10,000 – $50,000',
+  '$50,000 – $250,000',
+  '$250,000+',
+];
+
+const contactInfo = [
+  { icon: '📧', label: 'Email', value: 'hello@countryfarms.co' },
+  { icon: '📞', label: 'Phone', value: '+1 (515) 200-4870' },
+  { icon: '📍', label: 'Office', value: '218 Main Street, Ames, IA 50010' },
+  { icon: '🕐', label: 'Hours', value: 'Mon–Fri, 9 am – 5 pm CST' },
+];
+
+const faqs = [
+  {
+    q: 'Who can invest with Country Farms?',
+    a: 'Currently, Country Farms is open to accredited investors in the United States. An accredited investor generally has a net worth over $1M (excluding primary residence) or income over $200K per year ($300K joint). We are working toward a Reg A+ offering for non-accredited investors.',
+  },
+  {
+    q: 'How quickly will someone get back to me?',
+    a: 'We respond to all inquiries within one business day. For investment-specific questions, you\'ll be connected with one of our investor relations team members directly.',
+  },
+  {
+    q: 'Is there a minimum investment to get started?',
+    a: 'The minimum per property is $1,000. You can hold multiple investments simultaneously with no cap on total allocation.',
+  },
+  {
+    q: 'I\'m a farmer interested in partnering with Country Farms. Who should I contact?',
+    a: 'We\'d love to hear from you. Select "Farm operator inquiry" in the message below and our community partnerships team will follow up within two business days.',
+  },
+];
+---
+
+<Layout
+  title="Contact — Country Farms"
+  description="Reach out to the Country Farms team. Questions about investing, partnerships, or our platform — we're here to help."
+  lang="en"
+>
+  <Nav lang="en" />
+
+  <main id="main-content">
+
+    <!-- Page hero -->
+    <section class="bg-straw py-16 md:py-20" aria-labelledby="contact-heading">
+      <div class="cf-container text-center max-w-2xl mx-auto flex flex-col gap-4">
+        <h1 id="contact-heading" class="text-h1 text-dark-soil">Get in Touch</h1>
+        <p class="font-dm text-lg leading-[1.7] text-field-brown">
+          Whether you're ready to invest, just curious, or a farmer looking for a partner —
+          we want to hear from you.
+        </p>
+      </div>
+    </section>
+
+    <!-- Two-column: form + info -->
+    <section class="bg-warm-white cf-section" aria-label="Contact form and details">
+      <div class="cf-container grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+
+        <!-- Contact form -->
+        <div class="lg:col-span-3">
+          <form
+            name="contact"
+            method="POST"
+            action="/contact-success"
+            class="flex flex-col gap-6"
+            aria-labelledby="form-heading"
+            novalidate
+          >
+            <h2 id="form-heading" class="text-h3 text-dark-soil">Send Us a Message</h2>
+
+            <!-- Name + Email row -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="flex flex-col gap-1.5">
+                <label for="name" class="font-dm font-semibold text-sm text-dark-soil">
+                  Full Name <span class="text-terracotta" aria-hidden="true">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  autocomplete="name"
+                  placeholder="Your name"
+                  class="font-dm text-[15px] text-dark-soil placeholder:text-field-brown/50
+                         rounded-lg border border-wheat bg-white px-4 py-3
+                         focus:outline-none focus:border-terracotta focus:ring-2 focus:ring-terracotta/20
+                         transition-colors duration-150"
+                />
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <label for="email" class="font-dm font-semibold text-sm text-dark-soil">
+                  Email <span class="text-terracotta" aria-hidden="true">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  autocomplete="email"
+                  placeholder="you@example.com"
+                  class="font-dm text-[15px] text-dark-soil placeholder:text-field-brown/50
+                         rounded-lg border border-wheat bg-white px-4 py-3
+                         focus:outline-none focus:border-terracotta focus:ring-2 focus:ring-terracotta/20
+                         transition-colors duration-150"
+                />
+              </div>
+            </div>
+
+            <!-- Phone (optional) -->
+            <div class="flex flex-col gap-1.5">
+              <label for="phone" class="font-dm font-semibold text-sm text-dark-soil">
+                Phone <span class="font-normal text-field-brown text-xs">(optional)</span>
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                autocomplete="tel"
+                placeholder="+1 (555) 000-0000"
+                class="font-dm text-[15px] text-dark-soil placeholder:text-field-brown/50
+                       rounded-lg border border-wheat bg-white px-4 py-3
+                       focus:outline-none focus:border-terracotta focus:ring-2 focus:ring-terracotta/20
+                       transition-colors duration-150 max-w-xs"
+              />
+            </div>
+
+            <!-- Investment interest level -->
+            <div class="flex flex-col gap-1.5">
+              <label for="investment-level" class="font-dm font-semibold text-sm text-dark-soil">
+                Investment Interest Level
+              </label>
+              <div class="relative">
+                <select
+                  id="investment-level"
+                  name="investment_level"
+                  class="font-dm text-[15px] text-dark-soil rounded-lg border border-wheat bg-white
+                         px-4 py-3 w-full appearance-none cursor-pointer
+                         focus:outline-none focus:border-terracotta focus:ring-2 focus:ring-terracotta/20
+                         transition-colors duration-150"
+                >
+                  <option value="" disabled selected>Select an amount range</option>
+                  {investmentLevels.map((level) => (
+                    <option value={level}>{level}</option>
+                  ))}
+                </select>
+                <span class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-field-brown text-xs" aria-hidden="true">▼</span>
+              </div>
+            </div>
+
+            <!-- Message -->
+            <div class="flex flex-col gap-1.5">
+              <label for="message" class="font-dm font-semibold text-sm text-dark-soil">
+                Message <span class="text-terracotta" aria-hidden="true">*</span>
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows={5}
+                placeholder="Tell us about your interest, any questions, or how we can help..."
+                class="font-dm text-[15px] text-dark-soil placeholder:text-field-brown/50
+                       rounded-lg border border-wheat bg-white px-4 py-3 resize-y
+                       focus:outline-none focus:border-terracotta focus:ring-2 focus:ring-terracotta/20
+                       transition-colors duration-150"
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary self-start">
+              Send Message →
+            </button>
+          </form>
+        </div>
+
+        <!-- Contact info sidebar -->
+        <aside class="lg:col-span-2 flex flex-col gap-8" aria-label="Contact information">
+          <div class="flex flex-col gap-5">
+            <h2 class="text-h3 text-dark-soil">Contact Details</h2>
+            <ul class="flex flex-col gap-5">
+              {contactInfo.map(({ icon, label, value }) => (
+                <li class="flex items-start gap-4">
+                  <span class="text-2xl shrink-0 mt-0.5" aria-hidden="true">{icon}</span>
+                  <div>
+                    <span class="font-dm font-semibold text-xs uppercase tracking-[0.06em] text-field-brown block">{label}</span>
+                    <span class="font-dm text-[15px] text-dark-soil">{value}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Response promise -->
+          <div class="bg-straw border border-wheat rounded-xl p-6 flex flex-col gap-3">
+            <span class="text-2xl" aria-hidden="true">⚡</span>
+            <p class="font-dm font-semibold text-sm text-dark-soil">We respond within one business day</p>
+            <p class="font-dm text-sm leading-[1.65] text-field-brown">
+              Our investor relations team reviews every message personally. No bots, no auto-responders.
+            </p>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="bg-dark-soil rounded-xl p-6 flex flex-col gap-4">
+            <h3 class="font-lora font-semibold text-base text-warm-white">Stay in the Loop</h3>
+            <p class="font-dm text-sm leading-[1.65] text-warm-white/75">
+              New property alerts, quarterly impact reports, and market insights — direct to your inbox.
+            </p>
+            <form class="flex gap-2" aria-label="Newsletter sign-up">
+              <input
+                type="email"
+                placeholder="Your email"
+                aria-label="Email address for newsletter"
+                class="font-dm text-sm text-warm-white placeholder:text-warm-white/40 rounded-lg
+                       border border-field-brown/30 bg-warm-white/10 px-3 py-2 flex-1 min-w-0
+                       focus:outline-none focus:ring-2 focus:ring-terracotta/60
+                       transition-colors duration-150"
+              />
+              <button type="submit" class="btn-primary shrink-0 text-sm px-4 py-2">Subscribe</button>
+            </form>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="bg-straw cf-section" aria-labelledby="contact-faq-heading">
+      <div class="cf-container flex flex-col gap-10 max-w-3xl mx-auto">
+        <div class="text-center flex flex-col gap-3">
+          <h2 id="contact-faq-heading" class="text-h2 text-dark-soil">Common Questions</h2>
+          <p class="font-dm text-base text-field-brown">Answers to what we hear most.</p>
+        </div>
+
+        <div class="flex flex-col divide-y divide-wheat rounded-xl bg-warm-white border border-wheat overflow-hidden cf-card-shadow">
+          {faqs.map(({ q, a }) => (
+            <details class="group px-6 py-0">
+              <summary
+                class="flex items-center justify-between gap-4 py-5 cursor-pointer
+                       font-dm font-semibold text-[15px] text-dark-soil
+                       list-none select-none
+                       hover:text-terracotta transition-colors duration-150"
+              >
+                {q}
+                <span
+                  class="shrink-0 w-6 h-6 rounded-full border border-wheat flex items-center justify-center
+                         text-field-brown text-sm transition-transform duration-200
+                         group-open:rotate-45 group-open:text-terracotta group-open:border-terracotta"
+                  aria-hidden="true"
+                >
+                  +
+                </span>
+              </summary>
+              <p class="font-dm text-sm leading-[1.7] text-field-brown pb-5 -mt-1">
+                {a}
+              </p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer lang="en" />
+</Layout>

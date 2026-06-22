@@ -1,0 +1,28 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  bg?: 'straw' | 'sky-blue' | 'warm-white';
+  align?: 'center' | 'left';
+}
+
+const { title, subtitle, bg = 'straw', align = 'center' } = Astro.props;
+
+const bgClass = {
+  'straw':      'bg-straw',
+  'sky-blue':   'bg-sky-blue',
+  'warm-white': 'bg-warm-white',
+}[bg];
+
+const alignClass = align === 'center' ? 'text-center items-center mx-auto' : 'text-left items-start';
+---
+
+<section class={`${bgClass} py-16 md:py-24`}>
+  <div class={`cf-container flex flex-col gap-5 max-w-3xl ${alignClass}`}>
+    <h1 class="text-h1 text-dark-soil">{title}</h1>
+    {subtitle && (
+      <p class="font-dm text-lg leading-[1.7] text-field-brown">{subtitle}</p>
+    )}
+    <slot />
+  </div>
+</section>

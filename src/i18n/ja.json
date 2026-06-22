@@ -1,0 +1,203 @@
+{
+  "skipContent": "本文へスキップ",
+  "nav": {
+    "logoLabel": "Country Farms — ホーム",
+    "links": [
+      { "label": "仕組み",          "href": "/ja/how-it-works" },
+      { "label": "ポートフォリオ",  "href": "/ja/portfolio" },
+      { "label": "会社について",    "href": "/ja/about" },
+      { "label": "お問い合わせ",    "href": "/ja/contact" }
+    ],
+    "cta": "始める →",
+    "openMenu": "ナビゲーションメニューを開く",
+    "closeMenu": "ナビゲーションメニューを閉じる",
+    "drawerLabel": "ナビゲーションメニュー",
+    "langToggleLabel": "言語"
+  },
+  "hero": {
+    "badge": "農地投資",
+    "headline1": "農地に投資し、",
+    "headline2": "本物を育てよう。",
+    "subtitle": "Country Farmsは、生産性の高い農地とその土地が支えるコミュニティへの投資を実現します。本物のリターン、本物のインパクト。",
+    "ctaPrimary": "始める",
+    "ctaSecondary": "仕組みを見る",
+    "trust": "2,400人以上の投資家 · $48M の農地 · 18の運用物件",
+    "caption": "農地フォトグラフィー"
+  },
+  "whyFarmland": {
+    "heading": "なぜ農地なのか？",
+    "intro": "農地はあらゆる資産クラスを上回るパフォーマンスを発揮し、地域社会への真のインパクトをもたらします。",
+    "stats": [
+      {
+        "icon": "📈",
+        "stat": "12.1%",
+        "label": "歴史的リターン",
+        "desc": "農地は過去20年間で年平均12.1%のリターンを実現し、あらゆる市場サイクルで株式・債券を上回りました。"
+      },
+      {
+        "icon": "🛡️",
+        "stat": "3×",
+        "label": "インフレヘッジ",
+        "desc": "高インフレ期において、農地の価値は消費者物価の3倍のスピードで上昇し、あなたの購買力を守ります。"
+      },
+      {
+        "icon": "🌱",
+        "stat": "実物資産",
+        "label": "リアルアセット",
+        "desc": "株式と異なり、農地は一夜にして価値を失いません。毎シーズン食料と収入を生み出す、生産的な実物資産です。"
+      }
+    ]
+  },
+  "communityImpact": {
+    "badge": "コミュニティへの影響",
+    "heading1": "土地を買うだけじゃない。",
+    "heading2": "その土地の人々に投資する。",
+    "body": "Country Farmsのすべての物件には、コミュニティ開発プログラムが付随しています。地元農家との連携、農業教育の支援、そして農村経済を強化するサプライネットワークの構築に取り組んでいます。",
+    "pillars": [
+      { "icon": "🤝", "label": "地元農家とのパートナーシップ" },
+      { "icon": "🏘️", "label": "サプライヤーネットワークの支援" },
+      { "icon": "📚", "label": "農業教育プログラム" },
+      { "icon": "🌍", "label": "持続可能な土地管理" }
+    ],
+    "cta": "私たちのストーリーを知る",
+    "stats": [
+      { "num": "18",    "unit": "の運用物件",        "sub": "6州で展開中" },
+      { "num": "2,400+","unit": "人のコミュニティメンバー", "sub": "プログラムで支援中" },
+      { "num": "$48M",  "unit": "の農地管理",        "sub": "投資家のために運用" }
+    ]
+  },
+  "howItWorksPreview": {
+    "heading": "仕組み",
+    "intro": "登録から最初の四半期配当まで、たった3ステップ。",
+    "steps": [
+      {
+        "number": "01",
+        "title": "物件を探す",
+        "desc": "財務データ、土壌データ、コミュニティインパクトレポートを備えた厳選農地の投資機会を探索しましょう。"
+      },
+      {
+        "number": "02",
+        "title": "希望額を投資",
+        "desc": "$1,000から始められます。目標に合ったファームを選び、数分で投資を完了できます。"
+      },
+      {
+        "number": "03",
+        "title": "収益を得てインパクトを広げる",
+        "desc": "農場収益からの四半期配当を受け取り、ポートフォリオのパフォーマンスを追跡し、コミュニティへのインパクトが広がるのを見届けましょう。"
+      }
+    ],
+    "cta": "詳しいプロセスを見る →"
+  },
+  "featuredProperties": {
+    "heading": "注目物件",
+    "intro": "すべての物件は土壌品質、水利権、コミュニティパートナーシップの可能性について独自に審査されています。",
+    "viewAll": "全物件を見る →",
+    "viewDetails": "詳細を見る →",
+    "projectedReturn": "予想リターン",
+    "minInvestment": "最低投資額",
+    "acres": "エーカー",
+    "statusLabels": {
+      "Available":    "募集中",
+      "Funding Soon": "まもなく募集開始",
+      "Funded":       "募集終了",
+      "Completed":    "完了"
+    },
+    "properties": [
+      {
+        "name": "Sunridge Valley Farm",
+        "location": "カリフォルニア州 サンホアキンバレー",
+        "acres": 340,
+        "crop": "アーモンド農園",
+        "returnPct": "8.2%",
+        "minInvestment": "$2,500",
+        "status": "Available",
+        "bgFrom": "from-sky-blue/60",
+        "bgTo": "to-sage-green/40"
+      },
+      {
+        "name": "Prairie Creek Holdings",
+        "location": "アイオワ州 ストーリー郡",
+        "acres": 620,
+        "crop": "トウモロコシ・大豆",
+        "returnPct": "7.4%",
+        "minInvestment": "$1,000",
+        "status": "Available",
+        "bgFrom": "from-straw",
+        "bgTo": "to-sage-green/50"
+      },
+      {
+        "name": "Blue Ridge Pastures",
+        "location": "バージニア州 アルベマール郡",
+        "acres": 185,
+        "crop": "牧場・牧草地",
+        "returnPct": "9.1%",
+        "minInvestment": "$5,000",
+        "status": "Funding Soon",
+        "bgFrom": "from-sage-green/30",
+        "bgTo": "to-sky-blue/40"
+      }
+    ]
+  },
+  "testimonials": {
+    "heading": "みなさんの声",
+    "intro": "投資家から現場の農家まで。",
+    "items": [
+      {
+        "quote": "農地投資を始めるとは思ってもいませんでした。Country Farmsのおかげで仕組みが分かりやすく、始めるのも簡単でした。自分のお金がどこで働いているか——実際の食料を育て、地域コミュニティを支えているのがはっきりと分かります。",
+        "name": "Sarah K.",
+        "role": "2022年から投資家",
+        "initials": "SK",
+        "type": "investor"
+      },
+      {
+        "quote": "Country Farmsとのパートナーシップが私たちの経営を変えました。灌漑設備を刷新し、フルタイムのスタッフを2名増員でき、私たちが育てるものを心から気にかけてくれる投資家コミュニティとつながることができました。",
+        "name": "Tom Harrelson",
+        "role": "オペレーター、Prairie Creek Holdings",
+        "initials": "TH",
+        "type": "farmer"
+      }
+    ]
+  },
+  "ctaBanner": {
+    "heading1": "お金を、農地という",
+    "heading2": "本物の場所で働かせませんか？",
+    "body": "Country Farmsでは、2,400人以上の投資家がすでにポートフォリオと地域コミュニティを育てています。",
+    "primaryCta": "無料アカウントを作成",
+    "secondaryCta": "仕組みを知る"
+  },
+  "footer": {
+    "tagline": "土地に投資し、地域を育てる。農村アメリカに真のインパクトをもたらす、本物の農地からの本物のリターン。",
+    "newsletter": {
+      "heading": "最新情報を受け取る",
+      "body": "市場インサイトと新規物件情報をメールでお届けします。",
+      "placeholder": "メールアドレス",
+      "cta": "登録する →",
+      "emailLabel": "メールアドレス"
+    },
+    "platform": {
+      "heading": "プラットフォーム",
+      "links": [
+        { "label": "仕組み",          "path": "/how-it-works" },
+        { "label": "ポートフォリオ",  "path": "/portfolio" },
+        { "label": "手数料",          "path": "/how-it-works#fees" },
+        { "label": "よくある質問",    "path": "/how-it-works#faq" }
+      ]
+    },
+    "company": {
+      "heading": "会社情報",
+      "links": [
+        { "label": "会社について",  "path": "/about" },
+        { "label": "チーム",        "path": "/about#team" },
+        { "label": "パートナー",    "path": "/about#partners" },
+        { "label": "お問い合わせ",  "path": "/contact" }
+      ]
+    },
+    "social": {
+      "twitter":   "Twitter / X",
+      "linkedin":  "LinkedIn",
+      "instagram": "Instagram"
+    },
+    "allRightsReserved": "All rights reserved.",
+    "disclaimer": "Country Farmsは登録投資顧問業者ではありません。過去のパフォーマンスは将来の結果を保証するものではありません。投資には元本損失のリスクを含みます。情報提供のみを目的としています。"
+  }
+}

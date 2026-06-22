@@ -1,0 +1,119 @@
+---
+import { useTranslations, langPrefix, type Lang } from '../i18n/index';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang).footer;
+const prefix = langPrefix(lang);
+
+const socials = [
+  { label: t.social.twitter,   href: '#', icon: 'X'  },
+  { label: t.social.linkedin,  href: '#', icon: 'in' },
+  { label: t.social.instagram, href: '#', icon: 'IG' },
+];
+---
+
+<footer class="bg-dark-soil text-white" aria-label="Site footer">
+  <div class="cf-container py-16">
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+
+      <!-- Brand column -->
+      <div class="flex flex-col gap-4 sm:col-span-2 lg:col-span-1">
+        <a href={prefix + '/'} class="font-lora font-bold text-xl text-terracotta hover:text-[#D4733C] transition-colors duration-150">
+          Country Farms
+        </a>
+        <p class="font-dm text-sm leading-[1.65] text-white/60 max-w-xs">{t.tagline}</p>
+        <div class="flex gap-3 mt-2">
+          {socials.map(({ label, href, icon }) => (
+            <a
+              href={href}
+              aria-label={label}
+              class="w-9 h-9 rounded-lg border border-white/20 flex items-center justify-center
+                     font-dm font-semibold text-xs text-white/60
+                     hover:border-terracotta hover:text-terracotta transition-colors duration-150"
+            >
+              {icon}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Platform links -->
+      <nav aria-label={t.platform.heading}>
+        <h3 class="font-dm font-semibold text-xs uppercase tracking-[0.08em] text-white/40 mb-4">
+          {t.platform.heading}
+        </h3>
+        <ul class="flex flex-col gap-3">
+          {t.platform.links.map(({ label, path }) => (
+            <li>
+              <a
+                href={prefix + path}
+                class="font-dm text-sm text-white/70 hover:text-white transition-colors duration-150"
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <!-- Company links -->
+      <nav aria-label={t.company.heading}>
+        <h3 class="font-dm font-semibold text-xs uppercase tracking-[0.08em] text-white/40 mb-4">
+          {t.company.heading}
+        </h3>
+        <ul class="flex flex-col gap-3">
+          {t.company.links.map(({ label, path }) => (
+            <li>
+              <a
+                href={prefix + path}
+                class="font-dm text-sm text-white/70 hover:text-white transition-colors duration-150"
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <!-- Newsletter -->
+      <div class="flex flex-col gap-4">
+        <h3 class="font-dm font-semibold text-xs uppercase tracking-[0.08em] text-white/40">
+          {t.newsletter.heading}
+        </h3>
+        <p class="font-dm text-sm text-white/60 leading-[1.6]">{t.newsletter.body}</p>
+        <form class="flex flex-col gap-2" novalidate>
+          <label for="footer-email" class="sr-only">{t.newsletter.emailLabel}</label>
+          <input
+            id="footer-email"
+            type="email"
+            name="email"
+            placeholder={t.newsletter.placeholder}
+            autocomplete="email"
+            class="font-dm text-sm text-dark-soil bg-white rounded-lg px-4 py-3
+                   border border-transparent
+                   focus:outline-none focus:ring-2 focus:ring-terracotta
+                   placeholder:text-field-brown/50"
+          />
+          <button type="submit" class="btn-primary w-full justify-center py-3!">
+            {t.newsletter.cta}
+          </button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="pt-8 flex flex-col sm:flex-row justify-between gap-4 text-white/40">
+      <p class="font-dm text-xs">
+        © {new Date().getFullYear()} Country Farms. {t.allRightsReserved}
+      </p>
+      <p class="font-dm text-xs max-w-lg leading-relaxed">{t.disclaimer}</p>
+    </div>
+
+  </div>
+</footer>

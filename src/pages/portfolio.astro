@@ -1,0 +1,270 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import CTABanner from '../components/CTABanner.astro';
+import Footer from '../components/Footer.astro';
+
+const properties = [
+  {
+    id: 'sunridge',
+    name: 'Sunridge Valley Farm',
+    location: 'San Joaquin Valley, CA',
+    acres: 340,
+    crop: 'Almond Orchard',
+    returnPct: '8.2%',
+    minInvestment: '$2,500',
+    term: '7 years',
+    status: 'available',
+    bgGradient: 'from-sky-blue/60 to-sage-green/40',
+    operatorSince: 2018,
+  },
+  {
+    id: 'prairie-creek',
+    name: 'Prairie Creek Holdings',
+    location: 'Story County, IA',
+    acres: 620,
+    crop: 'Corn & Soybean',
+    returnPct: '7.4%',
+    minInvestment: '$1,000',
+    term: '10 years',
+    status: 'available',
+    bgGradient: 'from-straw to-sage-green/50',
+    operatorSince: 2015,
+  },
+  {
+    id: 'blue-ridge',
+    name: 'Blue Ridge Pastures',
+    location: 'Albemarle County, VA',
+    acres: 185,
+    crop: 'Cattle & Grassland',
+    returnPct: '9.1%',
+    minInvestment: '$5,000',
+    term: '8 years',
+    status: 'funding-soon',
+    bgGradient: 'from-sage-green/30 to-sky-blue/40',
+    operatorSince: 2020,
+  },
+  {
+    id: 'cascades',
+    name: 'Cascades Organic Farm',
+    location: 'Willamette Valley, OR',
+    acres: 210,
+    crop: 'Organic Vegetables',
+    returnPct: '10.2%',
+    minInvestment: '$3,000',
+    term: '5 years',
+    status: 'available',
+    bgGradient: 'from-sage-green/40 to-straw',
+    operatorSince: 2016,
+  },
+  {
+    id: 'heartland',
+    name: 'Heartland Wheat Fields',
+    location: 'Harvey County, KS',
+    acres: 850,
+    crop: 'Winter Wheat',
+    returnPct: '6.8%',
+    minInvestment: '$1,500',
+    term: '10 years',
+    status: 'funded',
+    bgGradient: 'from-warm-white to-straw',
+    operatorSince: 2012,
+  },
+  {
+    id: 'gulf-coast',
+    name: 'Gulf Coast Citrus Grove',
+    location: 'Polk County, FL',
+    acres: 290,
+    crop: 'Citrus',
+    returnPct: '7.9%',
+    minInvestment: '$2,000',
+    term: '7 years',
+    status: 'completed',
+    bgGradient: 'from-sky-blue/40 to-warm-white',
+    operatorSince: 2010,
+  },
+];
+
+const statusLabel: Record<string, string> = {
+  'available':    'Available',
+  'funding-soon': 'Funding Soon',
+  'funded':       'Fully Funded',
+  'completed':    'Completed',
+};
+
+const statusStyle: Record<string, string> = {
+  'available':    'bg-sage-green/15 text-sage-green',
+  'funding-soon': 'bg-terracotta/10 text-terracotta',
+  'funded':       'bg-wheat text-field-brown',
+  'completed':    'bg-dark-soil/10 text-field-brown',
+};
+
+const impactStats = [
+  { value: '2,495', label: 'Acres managed' },
+  { value: '6',     label: 'States covered' },
+  { value: '$48M',  label: 'Capital deployed' },
+  { value: '2,400+', label: 'Investors served' },
+];
+---
+
+<Layout
+  title="Portfolio — Country Farms"
+  description="Browse our curated farmland investment properties across the United States. Transparent financials, vetted operators, measurable community impact."
+  lang="en"
+>
+  <Nav lang="en" />
+
+  <main id="main-content">
+
+    <!-- Hero + filters -->
+    <section class="bg-straw py-16 md:py-20" aria-labelledby="portfolio-heading">
+      <div class="cf-container flex flex-col gap-8">
+        <div class="text-center flex flex-col gap-4 max-w-2xl mx-auto">
+          <h1 id="portfolio-heading" class="text-h1 text-dark-soil">Our Properties</h1>
+          <p class="font-dm text-lg leading-[1.7] text-field-brown">
+            Every listing is independently vetted for soil quality, water rights, operator history,
+            and community partnership potential. Fewer than 5% of reviewed properties make the platform.
+          </p>
+        </div>
+
+        <!-- Filter bar -->
+        <div class="flex flex-wrap justify-center gap-2" role="group" aria-label="Filter properties by status">
+          {['all', 'available', 'funding-soon', 'funded', 'completed'].map((f) => (
+            <button
+              type="button"
+              data-filter={f}
+              class={`filter-btn font-dm font-medium text-sm px-4 py-2 rounded-full border transition-all duration-150
+                      ${f === 'all'
+                        ? 'bg-terracotta text-white border-terracotta'
+                        : 'bg-warm-white text-field-brown border-wheat hover:border-terracotta hover:text-terracotta'}`}
+            >
+              {f === 'all' ? 'All' : statusLabel[f]}
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Property grid -->
+    <section class="bg-warm-white cf-section" aria-label="Property listings">
+      <div class="cf-container">
+        <div id="property-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {properties.map(({ name, location, acres, crop, returnPct, minInvestment, term, status, bgGradient, operatorSince }) => (
+            <article
+              data-status={status}
+              class="bg-white rounded-xl overflow-hidden border border-wheat cf-card-shadow
+                     transition-all duration-200 hover:-translate-y-1
+                     hover:shadow-[0_8px_32px_rgba(44,24,16,0.12)] flex flex-col"
+            >
+              <!-- Image placeholder -->
+              <div class={`h-52 bg-linear-to-br ${bgGradient} relative`} aria-hidden="true">
+                <span class={`absolute top-3 right-3 font-dm font-semibold text-xs px-3 py-1 rounded-full ${statusStyle[status]}`}>
+                  {statusLabel[status]}
+                </span>
+                <div class="absolute bottom-3 left-3 flex gap-2">
+                  <span class="font-dm text-xs text-field-brown/80 bg-white/70 backdrop-blur-sm rounded px-2 py-0.5">
+                    {acres} acres
+                  </span>
+                  <span class="font-dm text-xs text-field-brown/80 bg-white/70 backdrop-blur-sm rounded px-2 py-0.5">
+                    {crop}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Card body -->
+              <div class="flex flex-col gap-5 p-6 flex-1">
+                <div>
+                  <h2 class="font-lora font-semibold text-lg text-dark-soil">{name}</h2>
+                  <p class="font-dm text-sm text-field-brown mt-0.5">{location}</p>
+                </div>
+
+                <!-- Key stats -->
+                <dl class="grid grid-cols-3 gap-3 border-t border-wheat pt-4">
+                  <div>
+                    <dt class="font-dm text-[11px] uppercase tracking-[0.06em] text-field-brown">Return</dt>
+                    <dd class="font-lora font-bold text-xl text-terracotta mt-0.5">{returnPct}</dd>
+                  </div>
+                  <div>
+                    <dt class="font-dm text-[11px] uppercase tracking-[0.06em] text-field-brown">Min.</dt>
+                    <dd class="font-dm font-semibold text-sm text-dark-soil mt-0.5">{minInvestment}</dd>
+                  </div>
+                  <div>
+                    <dt class="font-dm text-[11px] uppercase tracking-[0.06em] text-field-brown">Term</dt>
+                    <dd class="font-dm font-semibold text-sm text-dark-soil mt-0.5">{term}</dd>
+                  </div>
+                </dl>
+
+                <p class="font-dm text-xs text-field-brown">Operator since {operatorSince}</p>
+
+                <a
+                  href="/contact"
+                  class={`btn-primary w-full justify-center mt-auto
+                          ${status === 'completed' || status === 'funded' ? 'bg-field-brown! cursor-default' : ''}`}
+                  aria-disabled={status === 'completed' ? 'true' : 'false'}
+                >
+                  {status === 'available' ? 'Invest Now →' :
+                   status === 'funding-soon' ? 'Join Waitlist →' :
+                   status === 'funded' ? 'Fully Funded' :
+                   'View Report →'}
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <!-- Empty state (shown when filter returns nothing) -->
+        <p id="no-results" class="hidden text-center font-dm text-base text-field-brown py-16">
+          No properties match this filter right now. <a href="/contact" class="text-terracotta underline underline-offset-2">Get notified</a> when new ones launch.
+        </p>
+      </div>
+    </section>
+
+    <!-- Impact summary banner -->
+    <section class="bg-straw cf-section" aria-label="Portfolio impact summary">
+      <div class="cf-container flex flex-col gap-10">
+        <h2 class="text-h2 text-dark-soil text-center">Portfolio at a Glance</h2>
+        <dl class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          {impactStats.map(({ value, label }) => (
+            <div class="bg-warm-white rounded-xl p-6 text-center flex flex-col gap-1 cf-card-shadow">
+              <dt class="font-dm text-sm text-field-brown">{label}</dt>
+              <dd class="font-lora font-bold text-3xl text-terracotta">{value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <CTABanner lang="en" />
+  </main>
+
+  <Footer lang="en" />
+</Layout>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const cards   = document.querySelectorAll<HTMLElement>('[data-status]');
+  const noRes   = document.getElementById('no-results');
+
+  function applyFilter(filter: string) {
+    let visible = 0;
+    cards.forEach((card) => {
+      const match = filter === 'all' || card.dataset.status === filter;
+      card.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+    if (noRes) noRes.classList.toggle('hidden', visible > 0);
+    buttons.forEach((btn) => {
+      const active = btn.dataset.filter === filter;
+      btn.classList.toggle('bg-terracotta',  active);
+      btn.classList.toggle('text-white',     active);
+      btn.classList.toggle('border-terracotta', active);
+      btn.classList.toggle('bg-warm-white',  !active);
+      btn.classList.toggle('text-field-brown', !active);
+      btn.classList.toggle('border-wheat',   !active);
+    });
+  }
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => applyFilter(btn.dataset.filter ?? 'all'));
+  });
+</script>

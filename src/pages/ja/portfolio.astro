@@ -1,0 +1,255 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import Footer from '../../components/Footer.astro';
+
+const properties = [
+  {
+    name: 'Sunridge Valley Farm',
+    location: 'カリフォルニア州 サンホアキンバレー',
+    acres: 340,
+    crop: 'アーモンド農園',
+    returnPct: '8.2%',
+    minInvestment: '$2,500',
+    term: '7年',
+    status: 'available',
+    bgGradient: 'from-sky-blue/60 to-sage-green/40',
+    operatorSince: 2018,
+  },
+  {
+    name: 'Prairie Creek Holdings',
+    location: 'アイオワ州 ストーリー郡',
+    acres: 620,
+    crop: 'トウモロコシ・大豆',
+    returnPct: '7.4%',
+    minInvestment: '$1,000',
+    term: '10年',
+    status: 'available',
+    bgGradient: 'from-straw to-sage-green/50',
+    operatorSince: 2015,
+  },
+  {
+    name: 'Blue Ridge Pastures',
+    location: 'バージニア州 アルベマール郡',
+    acres: 185,
+    crop: '牧場・牧草地',
+    returnPct: '9.1%',
+    minInvestment: '$5,000',
+    term: '8年',
+    status: 'funding-soon',
+    bgGradient: 'from-sage-green/30 to-sky-blue/40',
+    operatorSince: 2020,
+  },
+  {
+    name: 'Cascades Organic Farm',
+    location: 'オレゴン州 ウィラメットバレー',
+    acres: 210,
+    crop: '有機野菜',
+    returnPct: '10.2%',
+    minInvestment: '$3,000',
+    term: '5年',
+    status: 'available',
+    bgGradient: 'from-sage-green/40 to-straw',
+    operatorSince: 2016,
+  },
+  {
+    name: 'Heartland Wheat Fields',
+    location: 'カンザス州 ハービー郡',
+    acres: 850,
+    crop: '冬小麦',
+    returnPct: '6.8%',
+    minInvestment: '$1,500',
+    term: '10年',
+    status: 'funded',
+    bgGradient: 'from-warm-white to-straw',
+    operatorSince: 2012,
+  },
+  {
+    name: 'Gulf Coast Citrus Grove',
+    location: 'フロリダ州 ポーク郡',
+    acres: 290,
+    crop: '柑橘類',
+    returnPct: '7.9%',
+    minInvestment: '$2,000',
+    term: '7年',
+    status: 'completed',
+    bgGradient: 'from-sky-blue/40 to-warm-white',
+    operatorSince: 2010,
+  },
+];
+
+const statusLabel: Record<string, string> = {
+  'available':    '募集中',
+  'funding-soon': 'まもなく募集開始',
+  'funded':       '募集終了',
+  'completed':    '完了',
+};
+
+const statusStyle: Record<string, string> = {
+  'available':    'bg-sage-green/15 text-sage-green',
+  'funding-soon': 'bg-terracotta/10 text-terracotta',
+  'funded':       'bg-wheat text-field-brown',
+  'completed':    'bg-dark-soil/10 text-field-brown',
+};
+
+const impactStats = [
+  { value: '2,495', label: '管理エーカー' },
+  { value: '6',     label: '展開州数' },
+  { value: '$48M',  label: '投資実行済み資本' },
+  { value: '2,400+', label: '投資家数' },
+];
+---
+
+<Layout
+  title="ポートフォリオ — Country Farms"
+  description="全米の厳選農地投資物件をご覧ください。透明な財務情報、審査済みオペレーター、測定可能なコミュニティインパクト。"
+  lang="ja"
+>
+  <Nav lang="ja" />
+
+  <main id="main-content">
+
+    <section class="bg-straw py-16 md:py-20" aria-labelledby="portfolio-heading">
+      <div class="cf-container flex flex-col gap-8">
+        <div class="text-center flex flex-col gap-4 max-w-2xl mx-auto">
+          <h1 id="portfolio-heading" class="text-h1 text-dark-soil">物件一覧</h1>
+          <p class="font-dm text-lg leading-[1.7] text-field-brown">
+            すべての物件は、土壌品質・水利権・オペレーターの実績・コミュニティパートナーシップの可能性について独立審査されています。審査通過率は5%未満です。
+          </p>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-2" role="group" aria-label="ステータスで絞り込む">
+          {(['all', 'available', 'funding-soon', 'funded', 'completed'] as const).map((f) => (
+            <button
+              type="button"
+              data-filter={f}
+              class={`filter-btn font-dm font-medium text-sm px-4 py-2 rounded-full border transition-all duration-150
+                      ${f === 'all'
+                        ? 'bg-terracotta text-white border-terracotta'
+                        : 'bg-warm-white text-field-brown border-wheat hover:border-terracotta hover:text-terracotta'}`}
+            >
+              {f === 'all' ? 'すべて' : statusLabel[f]}
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-warm-white cf-section" aria-label="物件一覧">
+      <div class="cf-container">
+        <div id="property-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {properties.map(({ name, location, acres, crop, returnPct, minInvestment, term, status, bgGradient, operatorSince }) => (
+            <article
+              data-status={status}
+              class="bg-white rounded-xl overflow-hidden border border-wheat cf-card-shadow
+                     transition-all duration-200 hover:-translate-y-1
+                     hover:shadow-[0_8px_32px_rgba(44,24,16,0.12)] flex flex-col"
+            >
+              <div class={`h-52 bg-linear-to-br ${bgGradient} relative`} aria-hidden="true">
+                <span class={`absolute top-3 right-3 font-dm font-semibold text-xs px-3 py-1 rounded-full ${statusStyle[status]}`}>
+                  {statusLabel[status]}
+                </span>
+                <div class="absolute bottom-3 left-3 flex gap-2">
+                  <span class="font-dm text-xs text-field-brown/80 bg-white/70 backdrop-blur-sm rounded px-2 py-0.5">
+                    {acres} エーカー
+                  </span>
+                  <span class="font-dm text-xs text-field-brown/80 bg-white/70 backdrop-blur-sm rounded px-2 py-0.5">
+                    {crop}
+                  </span>
+                </div>
+              </div>
+
+              <div class="flex flex-col gap-5 p-6 flex-1">
+                <div>
+                  <h2 class="font-lora font-semibold text-lg text-dark-soil">{name}</h2>
+                  <p class="font-dm text-sm text-field-brown mt-0.5">{location}</p>
+                </div>
+
+                <dl class="grid grid-cols-3 gap-3 border-t border-wheat pt-4">
+                  <div>
+                    <dt class="font-dm text-[11px] uppercase tracking-[0.06em] text-field-brown">リターン</dt>
+                    <dd class="font-lora font-bold text-xl text-terracotta mt-0.5">{returnPct}</dd>
+                  </div>
+                  <div>
+                    <dt class="font-dm text-[11px] uppercase tracking-[0.06em] text-field-brown">最低額</dt>
+                    <dd class="font-dm font-semibold text-sm text-dark-soil mt-0.5">{minInvestment}</dd>
+                  </div>
+                  <div>
+                    <dt class="font-dm text-[11px] uppercase tracking-[0.06em] text-field-brown">期間</dt>
+                    <dd class="font-dm font-semibold text-sm text-dark-soil mt-0.5">{term}</dd>
+                  </div>
+                </dl>
+
+                <p class="font-dm text-xs text-field-brown">{operatorSince}年より運営</p>
+
+                <a
+                  href="/ja/contact"
+                  class={`btn-primary w-full justify-center mt-auto
+                          ${status === 'completed' || status === 'funded' ? 'bg-field-brown! cursor-default' : ''}`}
+                  aria-disabled={status === 'completed' ? 'true' : 'false'}
+                >
+                  {status === 'available' ? '投資する →' :
+                   status === 'funding-soon' ? '先行登録する →' :
+                   status === 'funded' ? '募集終了' :
+                   'レポートを見る →'}
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <p id="no-results" class="hidden text-center font-dm text-base text-field-brown py-16">
+          該当する物件はありません。新規物件の情報を受け取るには <a href="/ja/contact" class="text-terracotta underline underline-offset-2">こちら</a> からご登録ください。
+        </p>
+      </div>
+    </section>
+
+    <section class="bg-straw cf-section" aria-label="ポートフォリオサマリー">
+      <div class="cf-container flex flex-col gap-10">
+        <h2 class="text-h2 text-dark-soil text-center">ポートフォリオ概要</h2>
+        <dl class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          {impactStats.map(({ value, label }) => (
+            <div class="bg-warm-white rounded-xl p-6 text-center flex flex-col gap-1 cf-card-shadow">
+              <dt class="font-dm text-sm text-field-brown">{label}</dt>
+              <dd class="font-lora font-bold text-3xl text-terracotta">{value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <CTABanner lang="ja" />
+  </main>
+
+  <Footer lang="ja" />
+</Layout>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const cards   = document.querySelectorAll<HTMLElement>('[data-status]');
+  const noRes   = document.getElementById('no-results');
+
+  function applyFilter(filter: string) {
+    let visible = 0;
+    cards.forEach((card) => {
+      const match = filter === 'all' || card.dataset.status === filter;
+      card.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+    if (noRes) noRes.classList.toggle('hidden', visible > 0);
+    buttons.forEach((btn) => {
+      const active = btn.dataset.filter === filter;
+      btn.classList.toggle('bg-terracotta',    active);
+      btn.classList.toggle('text-white',       active);
+      btn.classList.toggle('border-terracotta', active);
+      btn.classList.toggle('bg-warm-white',    !active);
+      btn.classList.toggle('text-field-brown', !active);
+      btn.classList.toggle('border-wheat',     !active);
+    });
+  }
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => applyFilter(btn.dataset.filter ?? 'all'));
+  });
+</script>

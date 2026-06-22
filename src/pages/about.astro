@@ -1,0 +1,197 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import CTABanner from '../components/CTABanner.astro';
+import Footer from '../components/Footer.astro';
+
+const values = [
+  {
+    icon: '🌿',
+    title: 'Land as Legacy',
+    desc: 'We believe farmland belongs to communities, not just portfolios. Every investment we facilitate is designed to keep the land productive for generations.',
+  },
+  {
+    icon: '🤝',
+    title: 'Radical Transparency',
+    desc: 'No buried fees, no vague projections. You see the same data our analysts see — soil reports, water rights, operator track records, and realistic return models.',
+  },
+  {
+    icon: '🌾',
+    title: 'Community First',
+    desc: 'Local jobs, local supply chains, local schools. We measure success not just in returns but in what the land gives back to the people who live near it.',
+  },
+  {
+    icon: '📐',
+    title: 'Rigorous Standards',
+    desc: 'Fewer than 5% of reviewed properties make it onto the platform. We\'d rather have six excellent farms than sixty mediocre ones.',
+  },
+];
+
+const team = [
+  {
+    name: 'Margaret Holloway',
+    role: 'Co-Founder & CEO',
+    bio: 'Former agricultural economist at USDA. 20 years mapping the intersection of land stewardship and rural economic development.',
+    initials: 'MH',
+    bgColor: 'bg-terracotta',
+  },
+  {
+    name: 'James Okafor',
+    role: 'Co-Founder & CIO',
+    bio: 'Previously a portfolio manager at a $2B farmland REIT. Built the underwriting framework that vetted over $800M in agricultural assets.',
+    initials: 'JO',
+    bgColor: 'bg-sage-green',
+  },
+  {
+    name: 'Priya Nair',
+    role: 'Head of Community Partnerships',
+    bio: 'Former rural development director for three Midwestern counties. Brings the farmer and community voice to every deal we structure.',
+    initials: 'PN',
+    bgColor: 'bg-sky-blue',
+  },
+  {
+    name: 'Daniel Reyes',
+    role: 'Head of Technology',
+    bio: 'Spent a decade building investor portals for alternative asset managers. Obsessed with making complex financial data legible to everyday investors.',
+    initials: 'DR',
+    bgColor: 'bg-dark-soil',
+  },
+];
+
+const timeline = [
+  { year: '2018', event: 'Founded in Ames, Iowa by Margaret and James after a rural community bank failed and local farmers lost access to fair capital.' },
+  { year: '2019', event: 'First three properties onboarded. 40 investors. $1.2M deployed in Story County, Iowa.' },
+  { year: '2021', event: 'Launched community impact reporting. Expanded to California and Virginia. Surpassed $10M capital deployed.' },
+  { year: '2023', event: 'Welcomed Priya and Daniel to the leadership team. Six states. 1,800+ investor accounts.' },
+  { year: '2025', event: 'Crossed $48M deployed across 6 properties. Community impact: 120+ local jobs supported, $2.1M in local supply chain spend.' },
+];
+
+const partners = [
+  { name: 'USDA', desc: 'Data partner for soil health metrics' },
+  { name: 'Community Builders Coalition', desc: 'Rural economic development ally' },
+  { name: 'FarmLink', desc: 'Operator vetting and network' },
+  { name: 'Sustainable Agriculture Network', desc: 'Regenerative practice standards' },
+];
+---
+
+<Layout
+  title="About — Country Farms"
+  description="Country Farms was founded on the belief that land should work for everyone — investors, farmers, and the communities they sustain."
+  lang="en"
+>
+  <Nav lang="en" />
+
+  <main id="main-content">
+
+    <!-- Mission hero -->
+    <section class="bg-straw py-16 md:py-24" aria-labelledby="mission-heading">
+      <div class="cf-container flex flex-col gap-8 max-w-3xl">
+        <h1 id="mission-heading" class="text-h1 text-dark-soil">
+          We believe land should work<br class="hidden sm:block" /> for everyone.
+        </h1>
+        <p class="font-dm text-lg leading-[1.7] text-field-brown">
+          Country Farms started with a simple observation: the best asset class in America — productive farmland —
+          was accessible only to institutions and the ultra-wealthy, while the rural communities that actually worked
+          the land were left behind. We built Country Farms to change that.
+        </p>
+        <p class="font-dm text-base leading-[1.7] text-field-brown/80">
+          Every property on our platform creates a loop: outside capital flows in, farms stay productive,
+          local jobs are preserved, communities grow stronger, and investors earn a return that reflects
+          the real, lasting value of land.
+        </p>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="bg-warm-white cf-section" aria-labelledby="values-heading">
+      <div class="cf-container flex flex-col gap-12">
+        <div class="text-center max-w-2xl mx-auto flex flex-col gap-4">
+          <h2 id="values-heading" class="text-h2 text-dark-soil">What We Stand For</h2>
+          <p class="font-dm text-base leading-[1.7] text-field-brown">
+            Four principles that shape every property we list and every partnership we form.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {values.map(({ icon, title, desc }) => (
+            <div class="bg-white border border-wheat rounded-xl p-7 flex flex-col gap-4 cf-card-shadow hover:-translate-y-0.5 transition-transform duration-150">
+              <span class="text-4xl" aria-hidden="true">{icon}</span>
+              <h3 class="text-h3 text-dark-soil">{title}</h3>
+              <p class="font-dm text-sm leading-[1.65] text-field-brown">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class="bg-straw cf-section" aria-labelledby="team-heading">
+      <div class="cf-container flex flex-col gap-12">
+        <div class="text-center max-w-xl mx-auto flex flex-col gap-4">
+          <h2 id="team-heading" class="text-h2 text-dark-soil">The Team</h2>
+          <p class="font-dm text-base leading-[1.7] text-field-brown">
+            We come from agricultural economics, farmland finance, rural development, and technology —
+            united by the belief that good land investment is community investment.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {team.map(({ name, role, bio, initials, bgColor }) => (
+            <article class="bg-warm-white border border-wheat rounded-xl overflow-hidden cf-card-shadow flex flex-col">
+              <!-- Avatar -->
+              <div class={`${bgColor} h-32 flex items-center justify-center`} aria-hidden="true">
+                <span class="font-lora font-bold text-3xl text-white/90">{initials}</span>
+              </div>
+              <div class="p-6 flex flex-col gap-2 flex-1">
+                <h3 class="font-lora font-semibold text-lg text-dark-soil">{name}</h3>
+                <p class="font-dm font-semibold text-xs uppercase tracking-[0.06em] text-terracotta">{role}</p>
+                <p class="font-dm text-sm leading-[1.65] text-field-brown mt-1">{bio}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="bg-warm-white cf-section" aria-labelledby="timeline-heading">
+      <div class="cf-container flex flex-col gap-12 max-w-3xl mx-auto">
+        <div class="text-center flex flex-col gap-4">
+          <h2 id="timeline-heading" class="text-h2 text-dark-soil">Our Story</h2>
+          <p class="font-dm text-base leading-[1.7] text-field-brown">From one county in Iowa to six states and counting.</p>
+        </div>
+
+        <ol class="relative pl-8 border-l-2 border-wheat flex flex-col gap-0">
+          {timeline.map(({ year, event }, i) => (
+            <li class={`relative flex flex-col gap-1.5 ${i < timeline.length - 1 ? 'pb-10' : ''}`}>
+              <!-- Dot -->
+              <div
+                class="absolute left-[-1.15rem] top-1 w-4 h-4 rounded-full bg-terracotta border-2 border-warm-white"
+                aria-hidden="true"
+              ></div>
+              <span class="font-lora font-bold text-base text-terracotta">{year}</span>
+              <p class="font-dm text-sm leading-[1.65] text-field-brown">{event}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- Partners -->
+    <section class="bg-straw cf-section" aria-labelledby="partners-heading">
+      <div class="cf-container flex flex-col gap-10">
+        <h2 id="partners-heading" class="text-h2 text-dark-soil text-center">Trusted Partners</h2>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          {partners.map(({ name, desc }) => (
+            <div class="bg-warm-white border border-wheat rounded-xl p-6 flex flex-col gap-2 cf-card-shadow text-center">
+              <span class="font-lora font-semibold text-base text-dark-soil">{name}</span>
+              <span class="font-dm text-xs text-field-brown">{desc}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTABanner lang="en" />
+  </main>
+
+  <Footer lang="en" />
+</Layout>

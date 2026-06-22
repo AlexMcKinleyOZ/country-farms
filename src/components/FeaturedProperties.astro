@@ -1,0 +1,73 @@
+---
+import { useTranslations, type Lang } from '../i18n/index';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang).featuredProperties;
+
+const statusColor: Record<string, string> = {
+  'Available':    'bg-sage-green/15 text-sage-green',
+  'Funding Soon': 'bg-terracotta/10 text-terracotta',
+  'Funded':       'bg-wheat text-field-brown',
+};
+---
+
+<section class="bg-straw cf-section" aria-labelledby="properties-heading">
+  <div class="cf-container flex flex-col gap-12">
+
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+      <div class="flex flex-col gap-3 max-w-lg">
+        <h2 id="properties-heading" class="text-h2 text-dark-soil">{t.heading}</h2>
+        <p class="font-dm text-base leading-[1.7] text-field-brown">{t.intro}</p>
+      </div>
+      <a href={lang === 'ja' ? '/ja/portfolio' : '/portfolio'} class="btn-secondary shrink-0 self-start sm:self-auto">
+        {t.viewAll}
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {t.properties.map(({ name, location, acres, crop, returnPct, minInvestment, status, bgFrom, bgTo }) => (
+        <article class="bg-warm-white rounded-xl overflow-hidden border border-wheat cf-card-shadow
+                        transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(44,24,16,0.12)]
+                        flex flex-col">
+
+          <div class={`h-48 bg-linear-to-br ${bgFrom} ${bgTo} relative`} aria-hidden="true">
+            <span class="absolute bottom-3 left-3 font-dm text-xs text-field-brown/80 bg-white/60 backdrop-blur-sm rounded px-2 py-0.5">
+              {acres} {t.acres} · {crop}
+            </span>
+            <span class={`absolute top-3 right-3 font-dm font-semibold text-xs px-3 py-1 rounded-full ${statusColor[status] ?? ''}`}>
+              {t.statusLabels[status as keyof typeof t.statusLabels] ?? status}
+            </span>
+          </div>
+
+          <div class="flex flex-col gap-4 p-6 flex-1">
+            <div>
+              <h3 class="font-lora font-semibold text-lg text-dark-soil">{name}</h3>
+              <p class="font-dm text-sm text-field-brown mt-0.5">{location}</p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 border-t border-wheat pt-4">
+              <div>
+                <p class="font-dm text-xs text-field-brown uppercase tracking-[0.06em]">{t.projectedReturn}</p>
+                <p class="font-lora font-bold text-xl text-terracotta mt-0.5">{returnPct}</p>
+              </div>
+              <div>
+                <p class="font-dm text-xs text-field-brown uppercase tracking-[0.06em]">{t.minInvestment}</p>
+                <p class="font-dm font-semibold text-base text-dark-soil mt-0.5">{minInvestment}</p>
+              </div>
+            </div>
+
+            <a href={lang === 'ja' ? '/ja/portfolio' : '/portfolio'} class="btn-primary w-full justify-center mt-auto">
+              {t.viewDetails}
+            </a>
+          </div>
+
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>

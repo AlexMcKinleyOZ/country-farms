@@ -1,0 +1,190 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import Footer from '../../components/Footer.astro';
+
+const values = [
+  {
+    icon: '🌿',
+    title: '土地は受け継ぐもの',
+    desc: '農地はポートフォリオだけでなく、コミュニティに属するものだと考えています。私たちが支援するすべての投資は、その土地が世代を超えて生産的であり続けるように設計されています。',
+  },
+  {
+    icon: '🤝',
+    title: '徹底した透明性',
+    desc: '隠れた手数料も曖昧な予測もありません。土壌レポート、水利権、オペレーターの実績、現実的な収益モデルなど、私たちのアナリストが見ているデータをそのままお伝えします。',
+  },
+  {
+    icon: '🌾',
+    title: 'コミュニティが最優先',
+    desc: '地元の雇用、地元のサプライチェーン、地元の学校。成功の指標はリターンだけでなく、その土地が周辺に住む人々にどれだけ還元できるかにあります。',
+  },
+  {
+    icon: '📐',
+    title: '厳格な基準',
+    desc: '審査した物件の5%未満しかプラットフォームに掲載しません。60件の優良農場より、6件の優れた農場を選びます。',
+  },
+];
+
+const team = [
+  {
+    name: 'Margaret Holloway',
+    role: '共同創業者 & CEO',
+    bio: '元USDA農業経済学者。土地管理と農村経済開発の交点を研究してきた20年の経験を持つ。',
+    initials: 'MH',
+    bgColor: 'bg-terracotta',
+  },
+  {
+    name: 'James Okafor',
+    role: '共同創業者 & CIO',
+    bio: '200億円規模の農地REITでポートフォリオマネージャーを務めた経験を持つ。8,000億円超の農業資産を審査した引受フレームワークを構築。',
+    initials: 'JO',
+    bgColor: 'bg-sage-green',
+  },
+  {
+    name: 'Priya Nair',
+    role: 'コミュニティパートナーシップ責任者',
+    bio: '中西部3郡の元農村開発ディレクター。すべての案件に農家とコミュニティの視点をもたらす。',
+    initials: 'PN',
+    bgColor: 'bg-sky-blue',
+  },
+  {
+    name: 'Daniel Reyes',
+    role: 'テクノロジー責任者',
+    bio: '10年間、オルタナティブ資産運用会社の投資家向けポータルを構築。複雑な財務データを一般投資家にわかりやすく伝えることに情熱を持つ。',
+    initials: 'DR',
+    bgColor: 'bg-dark-soil',
+  },
+];
+
+const timeline = [
+  { year: '2018年', event: 'アイオワ州エイムズで、Margaret と James が農村コミュニティ銀行の経営破綻と農家の公正な資本調達の困難を目の当たりにして創業。' },
+  { year: '2019年', event: '最初の3物件を掲載。投資家40名。アイオワ州ストーリー郡で$120万を投資実行。' },
+  { year: '2021年', event: 'コミュニティインパクトレポートを開始。カリフォルニア州・バージニア州に展開拡大。投資実行済み資本が$1,000万を突破。' },
+  { year: '2023年', event: 'Priya・Danielがリーダーシップチームに参画。6州・1,800超の投資家口座。' },
+  { year: '2025年', event: '6物件で$4,800万の投資実行。コミュニティへのインパクト：地域雇用120名以上を支援、地元サプライチェーンへの支出$210万。' },
+];
+
+const partners = [
+  { name: 'USDA', desc: '土壌健全性データのパートナー' },
+  { name: 'Community Builders Coalition', desc: '農村経済開発のアライ' },
+  { name: 'FarmLink', desc: 'オペレーター審査・ネットワーク' },
+  { name: 'Sustainable Agriculture Network', desc: '再生農業の実践基準' },
+];
+---
+
+<Layout
+  title="会社について — Country Farms"
+  description="Country Farmsは、農地はすべての人のために働くべきだという信念のもと設立されました。投資家、農家、そして彼らを支えるコミュニティのために。"
+  lang="ja"
+>
+  <Nav lang="ja" />
+
+  <main id="main-content">
+
+    <!-- ミッション -->
+    <section class="bg-straw py-16 md:py-24" aria-labelledby="mission-heading">
+      <div class="cf-container flex flex-col gap-8 max-w-3xl">
+        <h1 id="mission-heading" class="text-h1 text-dark-soil">
+          土地は、すべての人のために<br class="hidden sm:block" />働くべきだと信じています。
+        </h1>
+        <p class="font-dm text-lg leading-[1.7] text-field-brown">
+          Country Farmsは、シンプルな観察から始まりました。アメリカ最良の資産クラス——生産性の高い農地——は機関投資家と超富裕層にしかアクセスできない一方、実際にその土地を耕す農村コミュニティは取り残されていたのです。私たちはその現実を変えるためにCountry Farmsを創りました。
+        </p>
+        <p class="font-dm text-base leading-[1.7] text-field-brown/80">
+          私たちのプラットフォームに掲載されるすべての物件は好循環を生み出します。外部資本が流入し、農場が生産性を維持し、地域雇用が守られ、コミュニティが強くなり、投資家は土地の本質的な長期価値を反映したリターンを受け取ります。
+        </p>
+      </div>
+    </section>
+
+    <!-- 価値観 -->
+    <section class="bg-warm-white cf-section" aria-labelledby="values-heading">
+      <div class="cf-container flex flex-col gap-12">
+        <div class="text-center max-w-2xl mx-auto flex flex-col gap-4">
+          <h2 id="values-heading" class="text-h2 text-dark-soil">私たちが大切にすること</h2>
+          <p class="font-dm text-base leading-[1.7] text-field-brown">
+            掲載するすべての物件と、形成するすべてのパートナーシップを形作る4つの原則。
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {values.map(({ icon, title, desc }) => (
+            <div class="bg-white border border-wheat rounded-xl p-7 flex flex-col gap-4 cf-card-shadow hover:-translate-y-0.5 transition-transform duration-150">
+              <span class="text-4xl" aria-hidden="true">{icon}</span>
+              <h3 class="text-h3 text-dark-soil">{title}</h3>
+              <p class="font-dm text-sm leading-[1.65] text-field-brown">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- チーム -->
+    <section class="bg-straw cf-section" aria-labelledby="team-heading" id="team">
+      <div class="cf-container flex flex-col gap-12">
+        <div class="text-center max-w-xl mx-auto flex flex-col gap-4">
+          <h2 id="team-heading" class="text-h2 text-dark-soil">チーム</h2>
+          <p class="font-dm text-base leading-[1.7] text-field-brown">
+            農業経済学、農地ファイナンス、農村開発、テクノロジー。異なるバックグラウンドを持つ私たちは、良い農地投資はコミュニティへの投資だという信念で一致しています。
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {team.map(({ name, role, bio, initials, bgColor }) => (
+            <article class="bg-warm-white border border-wheat rounded-xl overflow-hidden cf-card-shadow flex flex-col">
+              <div class={`${bgColor} h-32 flex items-center justify-center`} aria-hidden="true">
+                <span class="font-lora font-bold text-3xl text-white/90">{initials}</span>
+              </div>
+              <div class="p-6 flex flex-col gap-2 flex-1">
+                <h3 class="font-lora font-semibold text-lg text-dark-soil">{name}</h3>
+                <p class="font-dm font-semibold text-xs uppercase tracking-[0.06em] text-terracotta">{role}</p>
+                <p class="font-dm text-sm leading-[1.65] text-field-brown mt-1">{bio}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- タイムライン -->
+    <section class="bg-warm-white cf-section" aria-labelledby="timeline-heading">
+      <div class="cf-container flex flex-col gap-12 max-w-3xl mx-auto">
+        <div class="text-center flex flex-col gap-4">
+          <h2 id="timeline-heading" class="text-h2 text-dark-soil">私たちのストーリー</h2>
+          <p class="font-dm text-base leading-[1.7] text-field-brown">アイオワ州の1郡から、現在の6州へ。</p>
+        </div>
+
+        <ol class="relative pl-8 border-l-2 border-wheat flex flex-col gap-0">
+          {timeline.map(({ year, event }, i) => (
+            <li class={`relative flex flex-col gap-1.5 ${i < timeline.length - 1 ? 'pb-10' : ''}`}>
+              <div
+                class="absolute left-[-1.15rem] top-1 w-4 h-4 rounded-full bg-terracotta border-2 border-warm-white"
+                aria-hidden="true"
+              ></div>
+              <span class="font-lora font-bold text-base text-terracotta">{year}</span>
+              <p class="font-dm text-sm leading-[1.65] text-field-brown">{event}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- パートナー -->
+    <section class="bg-straw cf-section" aria-labelledby="partners-heading" id="partners">
+      <div class="cf-container flex flex-col gap-10">
+        <h2 id="partners-heading" class="text-h2 text-dark-soil text-center">信頼できるパートナー</h2>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          {partners.map(({ name, desc }) => (
+            <div class="bg-warm-white border border-wheat rounded-xl p-6 flex flex-col gap-2 cf-card-shadow text-center">
+              <span class="font-lora font-semibold text-base text-dark-soil">{name}</span>
+              <span class="font-dm text-xs text-field-brown">{desc}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTABanner lang="ja" />
+  </main>
+
+  <Footer lang="ja" />
+</Layout>

@@ -1,0 +1,203 @@
+{
+  "skipContent": "Skip to content",
+  "nav": {
+    "logoLabel": "Country Farms — home",
+    "links": [
+      { "label": "How It Works", "href": "/how-it-works" },
+      { "label": "Portfolio",    "href": "/portfolio" },
+      { "label": "About",        "href": "/about" },
+      { "label": "Contact",      "href": "/contact" }
+    ],
+    "cta": "Get Started →",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu",
+    "drawerLabel": "Navigation menu",
+    "langToggleLabel": "Language"
+  },
+  "hero": {
+    "badge": "Farmland Investing",
+    "headline1": "Invest in Farmland.",
+    "headline2": "Grow Something Real.",
+    "subtitle": "Country Farms lets you invest in productive agricultural land — and the communities that depend on it. Real returns, real impact.",
+    "ctaPrimary": "Get Started",
+    "ctaSecondary": "How It Works",
+    "trust": "2,400+ investors · $48M in farmland · 18 active properties",
+    "caption": "Farmland Photography"
+  },
+  "whyFarmland": {
+    "heading": "Why Farmland?",
+    "intro": "Farmland has consistently outperformed other asset classes — with the added benefit of real community impact.",
+    "stats": [
+      {
+        "icon": "📈",
+        "stat": "12.1%",
+        "label": "Historical Returns",
+        "desc": "Farmland has delivered 12.1% average annual returns over 20 years — outperforming equities and bonds through every market cycle."
+      },
+      {
+        "icon": "🛡️",
+        "stat": "3×",
+        "label": "Inflation Hedge",
+        "desc": "During high-inflation periods, farmland values have historically risen 3× faster than consumer prices, protecting your purchasing power."
+      },
+      {
+        "icon": "🌱",
+        "stat": "Tangible",
+        "label": "Real Asset",
+        "desc": "Unlike stocks, farmland doesn't crash overnight. It's a productive, physical asset that generates food and income every single season."
+      }
+    ]
+  },
+  "communityImpact": {
+    "badge": "Community Impact",
+    "heading1": "We don't just buy land.",
+    "heading2": "We invest in the people around it.",
+    "body": "Every Country Farms property is paired with a community development program. We partner with local farmers, fund agricultural education, and build the supply networks that help rural economies grow stronger together.",
+    "pillars": [
+      { "icon": "🤝", "label": "Local farmer partnerships" },
+      { "icon": "🏘️", "label": "Supplier network support" },
+      { "icon": "📚", "label": "Agricultural education programs" },
+      { "icon": "🌍", "label": "Sustainable land stewardship" }
+    ],
+    "cta": "Learn Our Story",
+    "stats": [
+      { "num": "18",    "unit": "active properties",      "sub": "across 6 states" },
+      { "num": "2,400+","unit": "community members",      "sub": "supported through our programs" },
+      { "num": "$48M",  "unit": "in farmland managed",    "sub": "on behalf of our investors" }
+    ]
+  },
+  "howItWorksPreview": {
+    "heading": "How It Works",
+    "intro": "Three simple steps from sign-up to your first quarterly distribution.",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Browse Properties",
+        "desc": "Explore vetted farmland opportunities with transparent financials, soil data, and community impact reports for each property."
+      },
+      {
+        "number": "02",
+        "title": "Invest Your Amount",
+        "desc": "Start with as little as $1,000. Choose the farm that fits your goals and complete your investment in minutes."
+      },
+      {
+        "number": "03",
+        "title": "Earn & Grow Impact",
+        "desc": "Receive quarterly distributions from farm income, track your portfolio performance, and watch your community impact grow."
+      }
+    ],
+    "cta": "See the Full Process →"
+  },
+  "featuredProperties": {
+    "heading": "Featured Properties",
+    "intro": "Each property is independently vetted for soil quality, water rights, and community partnership potential.",
+    "viewAll": "View All Properties →",
+    "viewDetails": "View Details →",
+    "projectedReturn": "Projected Return",
+    "minInvestment": "Min. Investment",
+    "acres": "acres",
+    "statusLabels": {
+      "Available":    "Available",
+      "Funding Soon": "Funding Soon",
+      "Funded":       "Funded",
+      "Completed":    "Completed"
+    },
+    "properties": [
+      {
+        "name": "Sunridge Valley Farm",
+        "location": "San Joaquin Valley, CA",
+        "acres": 340,
+        "crop": "Almond Orchard",
+        "returnPct": "8.2%",
+        "minInvestment": "$2,500",
+        "status": "Available",
+        "bgFrom": "from-sky-blue/60",
+        "bgTo": "to-sage-green/40"
+      },
+      {
+        "name": "Prairie Creek Holdings",
+        "location": "Story County, IA",
+        "acres": 620,
+        "crop": "Corn & Soybean",
+        "returnPct": "7.4%",
+        "minInvestment": "$1,000",
+        "status": "Available",
+        "bgFrom": "from-straw",
+        "bgTo": "to-sage-green/50"
+      },
+      {
+        "name": "Blue Ridge Pastures",
+        "location": "Albemarle County, VA",
+        "acres": 185,
+        "crop": "Cattle & Grassland",
+        "returnPct": "9.1%",
+        "minInvestment": "$5,000",
+        "status": "Funding Soon",
+        "bgFrom": "from-sage-green/30",
+        "bgTo": "to-sky-blue/40"
+      }
+    ]
+  },
+  "testimonials": {
+    "heading": "What People Are Saying",
+    "intro": "From investors to the farmers on the ground.",
+    "items": [
+      {
+        "quote": "I never thought I'd be a farmland investor. Country Farms made it simple to understand, easy to get started, and I love knowing exactly where my money is working — growing real food for real communities.",
+        "name": "Sarah K.",
+        "role": "Investor since 2022",
+        "initials": "SK",
+        "type": "investor"
+      },
+      {
+        "quote": "The partnership with Country Farms has transformed our operation. We've upgraded our irrigation, hired two more full-time staff, and connected with a community of investors who genuinely care about what we grow.",
+        "name": "Tom Harrelson",
+        "role": "Operator, Prairie Creek Holdings",
+        "initials": "TH",
+        "type": "farmer"
+      }
+    ]
+  },
+  "ctaBanner": {
+    "heading1": "Ready to put your money",
+    "heading2": "where the land is?",
+    "body": "Join 2,400+ investors already growing their portfolios — and their communities — through Country Farms.",
+    "primaryCta": "Create Free Account",
+    "secondaryCta": "How It Works"
+  },
+  "footer": {
+    "tagline": "Invest in the land. Grow the community. Real returns from productive farmland, with real impact for rural America.",
+    "newsletter": {
+      "heading": "Stay in the Loop",
+      "body": "Get market insights and new property alerts in your inbox.",
+      "placeholder": "your@email.com",
+      "cta": "Subscribe →",
+      "emailLabel": "Email address"
+    },
+    "platform": {
+      "heading": "Platform",
+      "links": [
+        { "label": "How It Works", "path": "/how-it-works" },
+        { "label": "Portfolio",    "path": "/portfolio" },
+        { "label": "Fees",         "path": "/how-it-works#fees" },
+        { "label": "FAQ",          "path": "/how-it-works#faq" }
+      ]
+    },
+    "company": {
+      "heading": "Company",
+      "links": [
+        { "label": "About Us",  "path": "/about" },
+        { "label": "Our Team",  "path": "/about#team" },
+        { "label": "Partners",  "path": "/about#partners" },
+        { "label": "Contact",   "path": "/contact" }
+      ]
+    },
+    "social": {
+      "twitter":   "Twitter / X",
+      "linkedin":  "LinkedIn",
+      "instagram": "Instagram"
+    },
+    "allRightsReserved": "All rights reserved.",
+    "disclaimer": "Country Farms is not a registered investment adviser. Past performance is not indicative of future results. Investing involves risk including possible loss of principal. For informational purposes only."
+  }
+}
